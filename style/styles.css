@@ -188,8 +188,10 @@ screen and (-ms-high-contrast: none) {
 .cta-btn--resume {
   border-radius: 0;
   color: #fff;
-  border: 2px solid #fff
+  border: 2px solid #fff;
+  justify-content: center;
 }
+
 
 .cta-btn--resume::after {
   background: #fff
@@ -424,6 +426,12 @@ section .row span {
     padding-bottom: 5rem;
     grid-template-columns: 1fr
   }
+}
+
+.about-wrapper__cta{
+  justify-content: center;
+  align-items: center;
+    text-align: center
 }
 
 #about .about-wrapper__image {
