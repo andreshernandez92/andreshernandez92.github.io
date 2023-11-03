@@ -18,8 +18,9 @@ body {
 }
 
 h1 {
-  font-weight: 700
+  font-weight: 900
 }
+
 
 .typewrite {
 font-size: 100%;
@@ -28,7 +29,7 @@ color: #FCA311;
 
 p,
 a {
-  font-size: 1.6rem
+  font-size: 2rem
 }
 
 a {
@@ -95,7 +96,8 @@ a:hover {
 }
 
 .cta-btn:hover {
-  box-shadow: 1.5px 1.5px 3px rgba(174, 174, 192, .4), -1px -1px 3px #fff
+  box-shadow: 1.5px 1.5px 3px rgba(174, 174, 192, .4), -1px -1px 3px #ffffff;
+
 }
 
 @media(max-width: 37.5em) {
@@ -194,7 +196,7 @@ screen and (-ms-high-contrast: none) {
 
 
 .cta-btn--resume::after {
-  background: #fff
+  background: #818181
 }
 
 .cta-btn--resume:hover {
@@ -404,25 +406,49 @@ section .row span {
   background-image: linear-gradient(0deg, #14213D 60%, #000000 100%);
   color: #fff;
   height: 100%;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   padding-bottom: 10%
 }
 
+#Tech_stack {
+  background-image: linear-gradient(25deg, #3D3014 0%, #14213D  70%);
+  padding: 15rem 0 10rem 0;
+  color: #fff;
+  margin-bottom: 5vw;
+}
+
+#projects {
+  background-image: linear-gradient(160deg, #3D3014 0%, #14213D  70%);
+  color: #ffffff;
+  margin-top: -15rem;
+  padding-top: 15rem;
+  line-height: 2.0;
+}
+
+#contact {
+  background-image: linear-gradient(25deg, #3D3014  0%,#14213D 60%);
+  padding: 15rem 0 10rem 0;
+  margin-top: -15rem;
+  margin-bottom: -1px;
+  color: #fff
+}
 @media(max-width: 75em) {
-  #about {
+  #about #Tech_stack  {
     height: 100%;
     -webkit-clip-path: none;
     clip-path: none
   }
+  #Tech_stack  {
+    margin-bottom: 0;
+  }
 }
-
-#about .about-wrapper {
+;
+    
+#about .about-wrapper #Tech_stack {
   grid-template-columns: 1fr 1fr
 }
 
 @media(max-width: 37.5em) {
-  #about .about-wrapper {
+  #about .about-wrapper #Tech_stack {
     padding-bottom: 5rem;
     grid-template-columns: 1fr
   }
@@ -431,57 +457,56 @@ section .row span {
 .about-wrapper__cta{
   justify-content: center;
   align-items: center;
-    text-align: center
+    text-align: center;
+   
 }
 
-#about .about-wrapper__image {
+#about #Tech_stack .about-wrapper__image {
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: center
 }
 
-#about .about-wrapper__image img {
+#about #Tech_stack .about-wrapper__image img {
   max-width: 350px;
   width: 100%
 }
 
 @media(max-width: 75em) {
-  #about .about-wrapper__image {
+  #about #Tech_stack .about-wrapper__image {
     height: 100%
   }
 }
 
 @media(max-width: 48em) {
-  #about .about-wrapper__image {
+  #about #Tech_stack .about-wrapper__image {
     padding-bottom: 4rem
   }
 }
 
-#about .about-wrapper__info {
+#about #Tech_stack .about-wrapper__info {
   display: flex;
   height: 100%;
   justify-content: center;
   flex-direction: column;
-  text-align: left
+  text-align: center;
+
 }
 
+.about-wrapper__info-text {
+  font-size: 1.8rem;
+}
+
+
 @media(max-width: 48em) {
-  #about .about-wrapper__info {
+  #about #Tech_stack .about-wrapper__info {
     align-items: center;
     text-align: center
   }
 }
 
-#contact {
-  background-image: linear-gradient(135deg, #36d1dc 0%, #FFFFFF 100%);
-  -webkit-clip-path: polygon(0 15vh, 100% 0, 100% 100%, 0 100%);
-  clip-path: polygon(0 15vh, 100% 0, 100% 100%, 0 100%);
-  padding: 15rem 0 10rem 0;
-  margin-top: -15rem;
-  margin-bottom: -1px;
-  color: #fff
-}
+
 
 @media(max-width: 75em) {
   #contact {
@@ -516,6 +541,18 @@ section .row span {
   }
 }
 
+
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: rgba(51, 51, 51, 0.9) /* Gray with 0.6 opacity */
+}
+
 #hero {
   min-height: 100vh;
   height: 100vh;
@@ -524,20 +561,14 @@ section .row span {
   font-weight: 400;
   color: #EAE0D5;
   padding: 0rem 5.6rem;
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-background-image: url("../assets/coding.jpg");
-opacity: 0.6;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
+  position: relative; /* Make sure the pseudo-element is positioned relative to this element */
   line-height: 1.2;
-  animation: hidden 1000ms linear forwards
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../assets/coding.jpg");
+  animation: hidden 1000ms linear forwards;
 }
-
 
 
 @media(max-width: 56.25em) {
@@ -679,12 +710,7 @@ opacity: 0.6;
   }
 }
 
-#projects {
-  background-color: #e5e5e5;
-  color: #272341;
-  margin-top: -15rem;
-  padding-top: 15rem
-}
+
 
 @media(max-width: 75em) {
   #projects {
@@ -750,7 +776,8 @@ opacity: 0.6;
 }
 
 #projects .project-wrapper__text-info {
-  margin-bottom: 1.5rem
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
 }
 
 #projects .project-wrapper__text-btns {
@@ -794,49 +821,57 @@ opacity: 0.6;
 }
 
 /* ========================= */
-
-.waves {
-  z-index: -2;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  opacity: 0.9;
-  background-color: var(--color);
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-  transition: 500ms;
+#Tech_stack_container{
+  display: flex;
 }
 
-.waves::before,
-.waves::after {
-  content: '';
-  position: absolute;
-  width: 300vw;
-  height: 300vw;
-  top: -65vw;
-  left: 50%;
-  transform: translate(-50%, -75%);
+.column {
+  flex: 1;
+  padding: 20px;
 }
 
-.waves::before {
-  border-radius: 44%;
-  background: rgba(51, 51, 51, 1);
-  animation: waves 8s linear infinite;
+.column h2 {
+  text-align: center;
+  font-size: 1,8rem;
 }
 
-.waves::after {
-  border-radius: 44%;
-  background: rgba(51, 51, 51, 0.5);
-  animation: waves 15s linear infinite;
+.item {
+  margin: 20px 0;
+  text-align: center;
 }
 
-@keyframes waves {
-  0% {
-    transform: translate(-50%, -75%) rotate(0deg);
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.imageteckstack {
+  width: 150px; /* Adjust the width as needed */
+  height: 150px; /* Adjust the height as needed */
+}
+.techstacktext{
+  font-size: 1.3rem;
+}
+
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
   }
-  
-  100% {
-    transform: translate(-50%, -75%) rotate(360deg);
+
+  .column {
+      padding: 10px;
   }
+}
+
+.bulletpointtext__projects{
+  font-size: 1.3rem;
+  color: rgb(172, 170, 170);
+}
+.highlighttext__projects{
+  color: white;
+  font-size: 2,0rem;
+  font-weight: 900;
 }
