@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Onboarding Bot | Andres Hernandez</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./style/styles.css" />
+
+  <style>
+    .case-study-hero {
+      padding-top: 120px;
+      padding-bottom: 60px;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(10, 10, 26, 1), rgba(20, 20, 40, 0.9));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .case-study-content {
+      padding: 60px 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .case-study-content h2 {
+      color: var(--primary);
+      margin-top: 50px;
+      margin-bottom: 25px;
+      font-size: 2.8rem;
+      border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+      padding-bottom: 10px;
+    }
+    .case-study-content p, .case-study-content li {
+      font-size: 1.6rem;
+      line-height: 1.8;
+      color: #b0b0c0;
+      margin-bottom: 15px;
+    }
+    .case-study-content ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+    .code-block {
+      background: #111;
+      padding: 25px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #36d1dc;
+      overflow-x: auto;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 1.4rem;
+      line-height: 1.6;
+    }
+    
+    /* FORM STYLES */
+    .demo-form-container {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 12px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    .demo-form-container h3 {
+      font-size: 2.2rem;
+      color: #fff;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .demo-form-container p.subtitle {
+      text-align: center;
+      color: #888;
+      margin-bottom: 30px;
+      font-size: 1.5rem;
+    }
+    .demo-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-size: 1.4rem;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+    .form-group input, .form-group select {
+      padding: 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 1.6rem;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    }
+    .submit-btn {
+      padding: 18px;
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 10px;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+    }
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .status-message {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.5rem;
+      text-align: center;
+      display: none;
+    }
+    .status-message.success {
+      display: block;
+      background: rgba(46, 213, 115, 0.1);
+      color: #2ed573;
+      border: 1px solid rgba(46, 213, 115, 0.3);
+    }
+    .status-message.error {
+      display: block;
+      background: rgba(255, 71, 87, 0.1);
+      color: #ff4757;
+      border: 1px solid rgba(255, 71, 87, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.svg" alt="Andres Hernandez Logo" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-cta"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="case-study-hero">
+    <div class="container fade-in">
+      <h1>Client <span class="highlight">Onboarding Bot</span></h1>
+      <p class="hero-subtitle" style="margin-top:20px; font-size:1.8rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        A fully automated pipeline using Zapier Webhooks to instantly provision ClickUp tasks, generate dynamic Google Docs, and dispatch Welcome emails.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT ========== -->
+  <section class="case-study-content container fade-in">
+    
+    <h2>🚀 Interactive Live Demo</h2>
+    <p>Fill out the form below. When you click submit, a Javascript <code>fetch()</code> request sends a JSON payload to a Zapier Webhook. The backend will instantly route the data into a CRM pipeline.</p>
+    
+    <div class="demo-form-container">
+      <h3>Start a Project</h3>
+      <p class="subtitle">Experience the automated onboarding pipeline in real time.</p>
+      
+      <form class="demo-form" id="onboarding-form">
+        <div class="form-group">
+          <label for="clientName">Full Name</label>
+          <input type="text" id="clientName" placeholder="e.g. John Doe" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="clientEmail">Email Address</label>
+          <input type="email" id="clientEmail" placeholder="e.g. john@example.com" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="companyName">Company Name</label>
+          <input type="text" id="companyName" placeholder="e.g. Acme Corp" required />
+        </div>
+        
+        <div class="form-group">
+          <label for="serviceType">Service Required</label>
+          <select id="serviceType" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option value="IT Support">Remote IT Support</option>
+            <option value="Network Admin">Network Administration</option>
+            <option value="Business Automation">Business Automation (Zapier/GHL)</option>
+            <option value="Cloud Migration">M365 / Azure Migration</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> Submit Request
+        </button>
+        
+        <div id="formStatus" class="status-message"></div>
+      </form>
+    </div>
+
+    <h2>🎥 Case Study Video Walkthrough</h2>
+    <p>Watch the 2-minute video below to see the automated onboarding pipeline in action—from form submission on this page to automatic task creation in ClickUp, document generation in Google Docs, and email delivery via Gmail.</p>
+    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-top: 20px; margin-bottom: 40px; border-radius: 12px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+      <iframe src="https://www.loom.com/embed/73effd96e54d42b1a84632f00c10d8bc?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
+
+    <h2>🛠️ Project Overview & Architecture</h2>
+    <p>Agencies and freelancers often lose hours to manual administrative work when signing a new client. This project proves how I utilize **Business Automation** to eliminate data entry and human error.</p>
+    
+    <p>The architecture consists of a custom HTML/JS frontend interacting with a **Zapier** serverless backend.</p>
+
+    <div class="code-block">
+[FRONTEND: Your Browser]
+HTML Form → Javascript fetch() POST
+      ↓ (JSON Payload via Webhook)
+[MIDDLEWARE: Zapier Workflow]
+1. Catch Webhook Data
+2. Route payload conditionally based on Service Type
+      ↓ (API Dispatch)
+[BACKEND CAPABILITIES]
+✅ CLICKUP: Create a "New Client" Task and assign to team
+✅ GOOGLE DOCS: Duplicate a template and inject {{CompanyName}}
+✅ GMAIL: Attach the generated Doc and email the client
+    </div>
+
+
+    <div style="text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+      <h3 style="margin-bottom: 20px;">Need this for your business?</h3>
+      <a href="index.html#contact-form" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Let's Work Together</a>
+      <a href="index.html" class="btn btn-outline btn-large" style="margin-left: 15px;"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="contact">
+    <div class="container" style="text-align: center;">
+      <p style="font-size: 1.4rem; color: #888;">&copy; 2026 Andres Hernandez. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./javascript/main.js"></script>
+  
+  <!-- FORM SUBMISSION SCRIPT -->
+  <script>
+    document.getElementById('onboarding-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      
+      // Update UI
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      status.className = 'status-message';
+      
+      // Gather Data using URLSearchParams to avoid CORS preflight issues
+      const formData = new URLSearchParams();
+      formData.append("name", document.getElementById('clientName').value);
+      formData.append("email", document.getElementById('clientEmail').value);
+      formData.append("company", document.getElementById('companyName').value);
+      formData.append("service", document.getElementById('serviceType').value);
+      
+      // Create a beautiful, readable date (e.g., "June 17, 2026")
+      const prettyDate = new Date().toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+      formData.append("timestamp", prettyDate);
+      
+      // REPLACE THIS URL WITH YOUR ZAPIER WEBHOOK URL
+      const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/17053061/430kx0j/"; 
+      
+      try {
+        if (!WEBHOOK_URL) {
+          // Simulation mode if no webhook is provided
+          await new Promise(r => setTimeout(r, 1500));
+          status.textContent = "Demo Mode: The Zapier Webhook URL has not been connected yet. But the frontend works perfectly!";
+          status.className = 'status-message success';
+        } else {
+          // Actual Webhook Call
+          const res = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            body: formData
+          });
+          
+          status.textContent = "Success! Your onboarding request has been processed. Check your email (or ClickUp).";
+          status.className = 'status-message success';
+          document.getElementById('onboarding-form').reset();
+        }
+      } catch (err) {
+        status.textContent = "Error connecting to the backend automation server.";
+        status.className = 'status-message error';
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Request';
+      }
+    });
+  </script>
+
+</body>
+</html>

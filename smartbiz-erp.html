@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartBiz Mini ERP Case Study | Andres Hernandez</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./style/styles.css" />
+
+  <style>
+    .case-study-hero {
+      padding-top: 120px;
+      padding-bottom: 60px;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(10, 10, 26, 1), rgba(20, 20, 40, 0.9));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .case-study-content {
+      padding: 60px 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .case-study-content h2 {
+      color: var(--primary);
+      margin-top: 50px;
+      margin-bottom: 25px;
+      font-size: 2.8rem;
+      border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+      padding-bottom: 10px;
+    }
+    .case-study-content h3 {
+      color: #e0e0e0;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      font-size: 2.2rem;
+    }
+    .case-study-content p, .case-study-content li {
+      font-size: 1.6rem;
+      line-height: 1.8;
+      color: #b0b0c0;
+      margin-bottom: 15px;
+    }
+    .case-study-content ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+    .screenshot-container {
+      margin: 40px 0;
+      text-align: center;
+    }
+    .screenshot-container img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .live-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+      margin-bottom: 60px;
+    }
+    .live-link-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .live-link-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 20px rgba(0, 212, 255, 0.1);
+    }
+    .live-link-card i {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    .live-link-card h4 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .live-link-card p {
+      font-size: 1.4rem;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    .live-link-card a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid var(--primary);
+      border-radius: 30px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .live-link-card a:hover {
+      background: var(--primary);
+      color: #000;
+    }
+    .code-block {
+      background: #111;
+      padding: 25px;
+      border-radius: 8px;
+      font-family: monospace;
+      color: #36d1dc;
+      overflow-x: auto;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 1.4rem;
+      line-height: 1.6;
+    }
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 15px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    th {
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.svg" alt="Andres Hernandez Logo" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-cta"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="case-study-hero">
+    <div class="container fade-in">
+      <h1>SmartBiz <span class="highlight">Mini ERP</span></h1>
+      <p class="hero-subtitle" style="margin-top:20px; font-size:1.8rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        A production-grade, zero-cost Enterprise Resource Planning system built entirely with Google Workspace tools. Demonstrating advanced Apps Script architecture, REST API integrations, and HTML Web Apps.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT ========== -->
+  <section class="case-study-content container fade-in">
+    
+    <h2>🚀 Interactive Live Demos</h2>
+    <p>Please explore the live deployed versions of the project. The system uses a distributed database architecture, splitting operations across isolated web apps and spreadsheets to ensure data integrity and security.</p>
+    
+    <div class="live-links-grid">
+      <div class="live-link-card">
+        <div>
+          <i class="fas fa-cash-register"></i>
+          <h4>POS Terminal Web App</h4>
+          <p>Live interactive Point of Sale HTML sidebar for sales staff.</p>
+        </div>
+        <a href="https://script.google.com/macros/s/AKfycbwd3HmQYdVlKjUtqtuEv7zI7JLo3Wo0b4PPoimoSSOiffLiky4JsuVKGyy90-0tGBs/exec?page=pos" target="_blank">Launch POS Demo <i class="fas fa-external-link-alt"></i></a>
+      </div>
+      <div class="live-link-card">
+        <div>
+          <i class="fas fa-chart-line"></i>
+          <h4>Live Dashboard Web App</h4>
+          <p>Real-time KPI dashboard generated dynamically for management.</p>
+        </div>
+        <a href="https://script.google.com/macros/s/AKfycbwd3HmQYdVlKjUtqtuEv7zI7JLo3Wo0b4PPoimoSSOiffLiky4JsuVKGyy90-0tGBs/exec?page=dashboard&role=admin" target="_blank">View Dashboard <i class="fas fa-external-link-alt"></i></a>
+      </div>
+      <div class="live-link-card">
+        <div>
+          <i class="fas fa-receipt"></i>
+          <h4>Expense Portal Web App</h4>
+          <p>Secure HTML form for staff to submit expenses with auto-classification.</p>
+        </div>
+        <a href="https://script.google.com/macros/s/AKfycbwd3HmQYdVlKjUtqtuEv7zI7JLo3Wo0b4PPoimoSSOiffLiky4JsuVKGyy90-0tGBs/exec?page=sidebar&role=admin" target="_blank">Submit Expense <i class="fas fa-external-link-alt"></i></a>
+      </div>
+      <div class="live-link-card">
+        <div>
+          <i class="fas fa-database"></i>
+          <h4>Main ERP Sheet</h4>
+          <p>The centralized control panel, P&L generation, and Config hub.</p>
+        </div>
+        <a href="https://docs.google.com/spreadsheets/d/1tykGIUis1F-eAn672_f1Mbb-VwlHGGviQ8esEvhi138/edit?usp=sharing" target="_blank">View Main Database <i class="fas fa-external-link-alt"></i></a>
+      </div>
+      <div class="live-link-card">
+        <div>
+          <i class="fas fa-boxes"></i>
+          <h4>External Inventory DB</h4>
+          <p>The isolated raw inventory database separated for security.</p>
+        </div>
+        <a href="https://docs.google.com/spreadsheets/d/1o0wBav6H70HZeAIYc0maZ_FQcHXyhF29FnMUBD2YAxs/edit?usp=sharing" target="_blank">View Inventory DB <i class="fas fa-external-link-alt"></i></a>
+      </div>
+    </div>
+
+    <h2>📹 System Walkthrough Video</h2>
+    <p>Watch this quick demonstration explaining the architecture and seeing the system in action.</p>
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 40px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1);">
+      <iframe src="https://www.loom.com/embed/2b050d2d209a4d84b7f8b256f70c7d7c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+    </div>
+
+    <h2>🛠️ Project Overview</h2>
+    <p>I engineered this system to prove that enterprise-grade automation can be achieved without expensive SaaS subscriptions. This ERP runs entirely on Google Sheets as the database and Google Apps Script as the backend.</p>
+    <p>It fetches live product data from a free REST API, allows cashiers to build a cart through a responsive HTML Web App, generates a PDF receipt via the Google Drive API, and fires off a branded HTML email using GmailApp — all in under 3 seconds.</p>
+    
+    <h2>📸 Custom Google Sheets UI</h2>
+    <div class="screenshot-container">
+      <img src="assets/smartbiz-menu.png" alt="SmartBiz ERP Custom Google Sheets Menu" />
+      <p style="font-size: 1.4rem; margin-top: 10px; color: #888;">The system injects a custom native menu into Google Sheets so non-technical staff can run reports and sync APIs without ever touching code.</p>
+    </div>
+
+    <h2>🏗️ Advanced System Architecture</h2>
+    <p>Unlike a standard monolithic spreadsheet which is prone to human error and data corruption, this ERP utilizes a robust <strong>Distributed Multi-Spreadsheet Architecture</strong>.</p>
+
+    <div class="code-block">
+[INPUT LAYER: Web Apps]
+POS Sidebar.html | Expense WebApp.html | dummyjson.com REST API
+      ↓ (Secure google.script.run)
+[APPS SCRIPT ENGINE: Backend]
+Concurrency control (LockService) | Rate Limiting (CacheService)
+Input Validation Engine | Config Reader 
+      ↓ (Automated Writing)
+[EXTERNAL DATA SHEETS: Isolated Databases]
+Smartbiz Orders | Smartbiz Inventory 
+      ↓ (Asynchronous Sync)
+[PROCESSING LAYER: Main Hub]
+P&L | Receipt PDF Generation | Live Dashboard | System Error Logs
+      ↓
+[OUTPUT LAYER: Automation]
+Gmail Alerts | Google Drive PDFs | Webhook JSON API Responses
+    </div>
+
+    <h3>Separation of Concerns (16 Modular Files)</h3>
+    <p>To maintain enterprise code quality, the backend logic is split across 16 distinct <code>.gs</code> files. This prevents spaghetti code and makes the system easily extensible.</p>
+    <ul>
+      <li><strong>01_Config.gs</strong>: Reads runtime settings so business limits (like tax rates) can be changed without coding.</li>
+      <li><strong>05_ApiIntegrations.gs</strong>: Handles <code>UrlFetchApp</code> calls to external endpoints.</li>
+      <li><strong>06_Validation.gs</strong>: A pure-function validation engine to sanitize all web app inputs.</li>
+      <li><strong>07_POS.gs</strong>: Manages the sales order pipeline and PDF receipt generation.</li>
+      <li><strong>13_WebApp.gs</strong>: Handles <code>doGet()</code> and <code>doPost()</code> routing for external webhooks.</li>
+    </ul>
+
+    <h2>🔒 Security & Concurrency (LockService)</h2>
+    <p>When multiple cashiers submit orders simultaneously, standard Google Sheets scripts suffer from race conditions, resulting in overwritten rows. This project implements Google's <code>LockService</code> to ensure robust concurrency.</p>
+    
+    <div class="code-block">
+// Production-grade concurrency pattern used in the POS module:
+const lock = LockService.getScriptLock();
+lock.waitLock(10000); // Wait up to 10 seconds for the queue
+try { 
+  // CRITICAL SECTION: Write to database, generate ID, export PDF
+} finally { 
+  lock.releaseLock(); 
+}
+    </div>
+
+    <p>Furthermore, the system employs <strong>Role-Based Access Control (RBAC)</strong>. Cashiers only receive the URL to the POS Web App and cannot view the underlying Profit & Loss data. Managers have view-only access to specific tabs, while the Admin utilizes the Config Sheet to manage parameters securely.</p>
+
+    <h2>⚡ Performance & Rate Limiting (CacheService)</h2>
+    <p>The POS terminal fetches a live product catalogue from a public REST API. To prevent rate-limiting and ensure instant UI load times, the system utilizes <code>CacheService</code>.</p>
+    
+    <div class="code-block">
+// Caching pattern used in API Integrations module:
+const cache = CacheService.getScriptCache();
+let raw = cache.get("product_catalogue");
+if (!raw) {
+  raw = UrlFetchApp.fetch("https://dummyjson.com/products").getContentText();
+  cache.put("product_catalogue", raw, 3600); // Cache for 1 hour
+}
+    </div>
+
+    <h2>📧 Automated Triggers & Webhooks</h2>
+    <p>The system is entirely self-sustaining. It uses programmatically installed time-driven triggers to run background jobs:</p>
+    <ul>
+      <li><strong>Every 6 hours:</strong> Refreshes the product catalogue API.</li>
+      <li><strong>Daily at 7:00 AM:</strong> Rebuilds the executive dashboard and P&L charts.</li>
+      <li><strong>Daily at 8:00 AM:</strong> Scans inventory and sends Low-Stock email alerts.</li>
+      <li><strong>Daily at 6:00 PM:</strong> Emails a beautifully formatted HTML End-of-Day Sales Report to the owner.</li>
+    </ul>
+    <p>The script also exposes a <code>doPost(e)</code> webhook, meaning external tools like Zapier, Make.com, or Shopify can POST JSON data directly into the ERP database.</p>
+
+    <div style="text-align: center; margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.1);">
+      <h3 style="margin-bottom: 20px;">Interested in building something like this?</h3>
+      <a href="index.html#contact-form" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Let's Work Together</a>
+      <a href="index.html" class="btn btn-outline btn-large" style="margin-left: 15px;"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="contact">
+    <div class="container" style="text-align: center;">
+      <p style="font-size: 1.4rem; color: #888;">&copy; 2026 Andres Hernandez. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="./javascript/main.js"></script>
+</body>
+</html>
