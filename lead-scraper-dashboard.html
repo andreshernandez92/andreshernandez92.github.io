@@ -350,7 +350,7 @@
 
     <!-- PIPELINE STEPS -->
     <h2>⚙️ How the Pipeline Works</h2>
-    <p>This automated ETL pipeline bypasses manual web scraping entirely. It connects directly to reliable, structured JSON data sources like the NYC Open Data API.</p>
+    <p>This automated ETL pipeline bypasses manual web scraping entirely. It connects directly to reliable, structured JSON data sources like the Open Brewery Database.</p>
 
     <div class="pipeline">
       <div class="p-step">
@@ -394,60 +394,53 @@
     <div class="table-wrap">
       <div class="table-head">
         <span class="live-dot"></span>
-        Latest Open Data Pull — <strong style="color:#fff; margin-left:4px;">NYC Business Licenses</strong>
+        Latest Open Data Pull — <strong style="color:#fff; margin-left:4px;">Open Brewery Database</strong>
       </div>
       <table class="leads-tbl">
         <thead>
           <tr>
             <th>Business Name</th>
-            <th>Industry</th>
+            <th>Type</th>
             <th>Location</th>
-            <th>Issue Date</th>
+            <th>Website</th>
             <th>Score</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Empire State Contractors LLC</strong></td>
-            <td>Home Improvement</td>
-            <td>Brooklyn, NY</td>
-            <td>2026-06-16</td>
-            <td><span class="badge b-green">🔥 High Value (B2B)</span></td>
+            <td><strong>Austin Beerworks</strong></td>
+            <td>Micro</td>
+            <td>Austin, TX</td>
+            <td><a href="#" style="color:#00d4ff;">austinbeerworks.com</a></td>
+            <td><span class="badge b-green">🔥 High Value (Needs Setup)</span></td>
           </tr>
           <tr>
-            <td><strong>Downtown Electronics Tech</strong></td>
-            <td>Electronic Store</td>
-            <td>New York, NY</td>
-            <td>2026-06-15</td>
-            <td><span class="badge b-yellow">✅ Medium Value</span></td>
+            <td><strong>Sierra Nevada Brewing</strong></td>
+            <td>Regional</td>
+            <td>Chico, CA</td>
+            <td><a href="#" style="color:#00d4ff;">sierranevada.com</a></td>
+            <td><span class="badge b-yellow">✅ Enterprise Lead</span></td>
           </tr>
           <tr>
-            <td><strong>Queens Roofing Specialists</strong></td>
-            <td>Home Improvement</td>
-            <td>Queens, NY</td>
-            <td>2026-06-15</td>
-            <td><span class="badge b-green">🔥 High Value (B2B)</span></td>
+            <td><strong>Bells Brewery</strong></td>
+            <td>Large</td>
+            <td>Comstock, MI</td>
+            <td><a href="#" style="color:#00d4ff;">bellsbeer.com</a></td>
+            <td><span class="badge b-yellow">✅ Enterprise Lead</span></td>
           </tr>
           <tr>
-            <td><strong>Main Street Cafe Corp</strong></td>
-            <td>Food Services</td>
-            <td>Staten Island, NY</td>
-            <td>2026-06-14</td>
+            <td><strong>Jester King Brewery</strong></td>
+            <td>Micro</td>
+            <td>Austin, TX</td>
+            <td><a href="#" style="color:#00d4ff;">jesterkingbrewery.com</a></td>
+            <td><span class="badge b-green">🔥 High Value (Needs Setup)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Russian River Brewing</strong></td>
+            <td>Brewpub</td>
+            <td>Santa Rosa, CA</td>
+            <td><a href="#" style="color:#00d4ff;">russianriverbrewing.com</a></td>
             <td><span class="badge b-gray">📬 Standard Lead</span></td>
-          </tr>
-          <tr>
-            <td><strong>Precision Commercial Cleaning</strong></td>
-            <td>General Services</td>
-            <td>Bronx, NY</td>
-            <td>2026-06-13</td>
-            <td><span class="badge b-yellow">✅ Medium Value</span></td>
-          </tr>
-          <tr>
-            <td><strong>Skyline Plumbing Corp</strong></td>
-            <td>Home Improvement</td>
-            <td>Brooklyn, NY</td>
-            <td>2026-06-12</td>
-            <td><span class="badge b-green">🔥 High Value (B2B)</span></td>
           </tr>
         </tbody>
       </table>
@@ -458,7 +451,7 @@
     <div class="demo-section">
       <div class="demo-note"><span class="live-dot"></span> Hosted 24/7 on Render.com — Free</div>
       <h3>Click a button. Trigger the API script.</h3>
-      <p>The demo app is hosted on <strong>Render.com</strong>. Clicking "Run Demo" triggers a Python Flask endpoint that queries the NYC Open Data API, processes the JSON with Pandas, and displays the results in your browser in real time.</p>
+      <p>The demo app is hosted on <strong>Render.com</strong>. Clicking "Run Demo" triggers a Python Flask endpoint that queries the Open Brewery Database API, processes the JSON with Pandas, and displays the results in your browser in real time.</p>
       <a href="https://YOUR-APP-NAME.onrender.com" target="_blank" class="btn-demo" id="demo-section-btn">
         <span class="pulse-icon"></span>
         Open Live Demo
