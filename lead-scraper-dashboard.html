@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lead Scraping & Intelligence Dashboard | Andres Hernandez</title>
-  <meta name="description" content="Automated Python pipeline that scrapes real business leads from the web, cleans the data with Pandas, and visualizes it in a live Looker Studio intelligence dashboard." />
+  <title>API Lead Data Pipeline | Andres Hernandez</title>
+  <meta name="description" content="Automated Python pipeline that connects to public Open Data APIs, extracts fresh business leads via JSON, cleans them with Pandas, and feeds a Looker Studio dashboard." />
 
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -227,7 +227,6 @@
     }
     .b-green  { background: rgba(46,213,115,0.13); color: #2ed573; }
     .b-yellow { background: rgba(255,200,0,0.13);  color: #ffc800; }
-    .b-blue   { background: rgba(0,212,255,0.13);  color: #00d4ff; }
     .b-gray   { background: rgba(255,255,255,0.08); color: #999; }
 
     /* ── LIVE DEMO SECTION ──────────────────────────────── */
@@ -240,7 +239,7 @@
       text-align: center;
     }
     .demo-section h3 { font-size: 2.2rem; color: #fff; margin-bottom: 12px; }
-    .demo-section p { font-size: 1.5rem; color: #888; margin-bottom: 28px; line-height: 1.7; max-width: 580px; margin-left: auto; margin-right: auto; margin-bottom: 28px; }
+    .demo-section p { font-size: 1.5rem; color: #888; margin-bottom: 28px; line-height: 1.7; max-width: 580px; margin-left: auto; margin-right: auto; }
     .demo-note {
       display: inline-flex;
       align-items: center;
@@ -321,18 +320,18 @@
   <!-- HERO -->
   <section class="cs-hero">
     <div class="container fade-in">
-      <div class="hero-badge"><i class="fas fa-spider"></i> Automated Data Pipeline</div>
-      <h1>Lead Scraping &amp; <span class="highlight">Intelligence Dashboard</span></h1>
+      <div class="hero-badge"><i class="fas fa-satellite-dish"></i> Live API Pipeline</div>
+      <h1>Open Data <span class="highlight">Lead Generator</span></h1>
       <p class="hero-subtitle" style="margin-top:18px; font-size:1.8rem; max-width:800px; margin-left:auto; margin-right:auto;">
-        A fully automated Python pipeline that scrapes real business data from the web, cleans and scores it with Pandas, and feeds a live Looker Studio dashboard — zero manual work required.
+        A Python pipeline that connects to official government Open Data APIs, extracts fresh business licenses via JSON, cleans the data, and syncs it to a live Looker Studio sales dashboard.
       </p>
       <div class="tag-strip">
         <span>Python 3</span>
-        <span>BeautifulSoup4</span>
+        <span>REST APIs</span>
+        <span>JSON parsing</span>
         <span>Pandas</span>
-        <span>Google Sheets API</span>
         <span>Looker Studio</span>
-        <span>Lead Generation</span>
+        <span>ETL Pipeline</span>
       </div>
       <div class="demo-cta-strip">
         <a href="https://YOUR-APP-NAME.onrender.com" target="_blank" class="btn-demo" id="live-demo-btn">
@@ -351,127 +350,104 @@
 
     <!-- PIPELINE STEPS -->
     <h2>⚙️ How the Pipeline Works</h2>
-    <p>One button click triggers a fully automated 4-step process — no spreadsheets opened manually, no copy-paste, no data entry.</p>
+    <p>This automated ETL pipeline bypasses manual web scraping entirely. It connects directly to reliable, structured JSON data sources like the NYC Open Data API.</p>
 
     <div class="pipeline">
       <div class="p-step">
         <div class="num">1</div>
-        <i class="fas fa-spider"></i>
-        <h4>Scrape</h4>
-        <p>Python fetches raw HTML from a live business directory in real time</p>
+        <i class="fas fa-download"></i>
+        <h4>Fetch</h4>
+        <p>Python script hits an Open Data API endpoint and retrieves fresh business records in JSON format.</p>
       </div>
       <div class="p-step">
         <div class="num">2</div>
         <i class="fas fa-broom"></i>
         <h4>Clean</h4>
-        <p>Pandas removes duplicates, normalizes formats, and fills missing values</p>
+        <p>Pandas removes null values, standardizes address formatting, and parses dates.</p>
       </div>
       <div class="p-step">
         <div class="num">3</div>
-        <i class="fas fa-trophy"></i>
-        <h4>Score</h4>
-        <p>Custom algorithm assigns each lead a Priority A–D label automatically</p>
+        <i class="fas fa-filter"></i>
+        <h4>Filter</h4>
+        <p>Custom logic scores the leads based on industry, filtering out irrelevant business types.</p>
       </div>
       <div class="p-step">
         <div class="num">4</div>
-        <i class="fas fa-chart-bar"></i>
-        <h4>Visualize</h4>
-        <p>Clean data syncs to Google Sheets → Looker Studio dashboard updates live</p>
+        <i class="fas fa-chart-line"></i>
+        <h4>Dashboard</h4>
+        <p>The clean dataset syncs to Google Sheets, powering a live, automatically refreshing Looker Studio view.</p>
       </div>
     </div>
 
     <!-- STATS -->
     <div class="stats">
-      <div class="stat"><span class="val">250+</span><div class="lbl">Leads Extracted</div></div>
-      <div class="stat"><span class="val">~15s</span><div class="lbl">Full Run Time</div></div>
-      <div class="stat"><span class="val">$0</span><div class="lbl">Monthly Hosting Cost</div></div>
-      <div class="stat"><span class="val">100%</span><div class="lbl">Automated</div></div>
+      <div class="stat"><span class="val">JSON</span><div class="lbl">Data Source</div></div>
+      <div class="stat"><span class="val">Daily</span><div class="lbl">Update Frequency</div></div>
+      <div class="stat"><span class="val">100%</span><div class="lbl">Legal Open Data</div></div>
+      <div class="stat"><span class="val">0</span><div class="lbl">Manual Clicks</div></div>
     </div>
 
     <!-- SAMPLE OUTPUT TABLE -->
-    <h2>📋 Sample Lead Output</h2>
-    <p>This is the structured data the pipeline produces on every run. The <strong>Lead Score</strong> column is calculated automatically based on market size — no manual sorting needed.</p>
+    <h2>📋 Sample API Output (Cleaned)</h2>
+    <p>This is the structured Pandas output retrieved directly from the API. The <strong>Lead Score</strong> is automatically assigned during the transformation phase to help sales teams prioritize outreach.</p>
 
     <div class="table-wrap">
       <div class="table-head">
         <span class="live-dot"></span>
-        Latest scrape output — <strong style="color:#fff; margin-left:4px;">250 leads · Jun 17, 2026</strong>
+        Latest Open Data Pull — <strong style="color:#fff; margin-left:4px;">NYC Business Licenses</strong>
       </div>
       <table class="leads-tbl">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Business / Market</th>
-            <th>City / Capital</th>
-            <th>Market Size</th>
-            <th>Density</th>
-            <th>Lead Score</th>
+            <th>Business Name</th>
+            <th>Industry</th>
+            <th>Location</th>
+            <th>Issue Date</th>
+            <th>Score</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
-            <td><strong>China</strong></td>
-            <td>Beijing</td>
-            <td>1,379,302,771</td>
-            <td>145.7/km²</td>
-            <td><span class="badge b-green">🔥 Priority A</span></td>
+            <td><strong>Empire State Contractors LLC</strong></td>
+            <td>Home Improvement</td>
+            <td>Brooklyn, NY</td>
+            <td>2026-06-16</td>
+            <td><span class="badge b-green">🔥 High Value (B2B)</span></td>
           </tr>
           <tr>
-            <td>2</td>
-            <td><strong>India</strong></td>
-            <td>New Delhi</td>
-            <td>1,281,935,911</td>
-            <td>423.1/km²</td>
-            <td><span class="badge b-green">🔥 Priority A</span></td>
+            <td><strong>Downtown Electronics Tech</strong></td>
+            <td>Electronic Store</td>
+            <td>New York, NY</td>
+            <td>2026-06-15</td>
+            <td><span class="badge b-yellow">✅ Medium Value</span></td>
           </tr>
           <tr>
-            <td>3</td>
-            <td><strong>United States</strong></td>
-            <td>Washington D.C.</td>
-            <td>326,625,791</td>
-            <td>33.8/km²</td>
-            <td><span class="badge b-green">🔥 Priority A</span></td>
+            <td><strong>Queens Roofing Specialists</strong></td>
+            <td>Home Improvement</td>
+            <td>Queens, NY</td>
+            <td>2026-06-15</td>
+            <td><span class="badge b-green">🔥 High Value (B2B)</span></td>
           </tr>
           <tr>
-            <td>4</td>
-            <td><strong>Brazil</strong></td>
-            <td>Brasília</td>
-            <td>207,353,391</td>
-            <td>24.4/km²</td>
-            <td><span class="badge b-yellow">✅ Priority B</span></td>
+            <td><strong>Main Street Cafe Corp</strong></td>
+            <td>Food Services</td>
+            <td>Staten Island, NY</td>
+            <td>2026-06-14</td>
+            <td><span class="badge b-gray">📬 Standard Lead</span></td>
           </tr>
           <tr>
-            <td>5</td>
-            <td><strong>Mexico</strong></td>
-            <td>Mexico City</td>
-            <td>129,163,276</td>
-            <td>66.1/km²</td>
-            <td><span class="badge b-yellow">✅ Priority B</span></td>
+            <td><strong>Precision Commercial Cleaning</strong></td>
+            <td>General Services</td>
+            <td>Bronx, NY</td>
+            <td>2026-06-13</td>
+            <td><span class="badge b-yellow">✅ Medium Value</span></td>
           </tr>
           <tr>
-            <td>6</td>
-            <td><strong>Germany</strong></td>
-            <td>Berlin</td>
-            <td>82,114,224</td>
-            <td>232.3/km²</td>
-            <td><span class="badge b-yellow">✅ Priority B</span></td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td><strong>Chile</strong></td>
-            <td>Santiago</td>
-            <td>17,789,267</td>
-            <td>23.6/km²</td>
-            <td><span class="badge b-blue">📬 Priority C</span></td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td><strong>Bahrain</strong></td>
-            <td>Manama</td>
-            <td>1,378,904</td>
-            <td>1,831.2/km²</td>
-            <td><span class="badge b-gray">❄️ Priority D</span></td>
+            <td><strong>Skyline Plumbing Corp</strong></td>
+            <td>Home Improvement</td>
+            <td>Brooklyn, NY</td>
+            <td>2026-06-12</td>
+            <td><span class="badge b-green">🔥 High Value (B2B)</span></td>
           </tr>
         </tbody>
       </table>
@@ -481,27 +457,26 @@
     <h2>🚀 Try the Live Demo</h2>
     <div class="demo-section">
       <div class="demo-note"><span class="live-dot"></span> Hosted 24/7 on Render.com — Free</div>
-      <h3>Click a button. Watch it scrape in real time.</h3>
-      <p>The demo app is hosted on <strong>Render.com</strong> (free tier). When you click "Run Scraper," it hits a live Python endpoint, scrapes the website, cleans the data, and returns the results — all in your browser, no installs needed.</p>
+      <h3>Click a button. Trigger the API script.</h3>
+      <p>The demo app is hosted on <strong>Render.com</strong>. Clicking "Run Demo" triggers a Python Flask endpoint that queries the NYC Open Data API, processes the JSON with Pandas, and displays the results in your browser in real time.</p>
       <a href="https://YOUR-APP-NAME.onrender.com" target="_blank" class="btn-demo" id="demo-section-btn">
         <span class="pulse-icon"></span>
         Open Live Demo
       </a>
       <div class="host-chips">
         <span class="host-chip recommended"><i class="fas fa-server"></i> Render.com <span style="font-size:1.1rem; color:#2ed573; margin-left:4px;">★ Recommended</span></span>
-        <span class="host-chip"><i class="fas fa-code"></i> Replit (embed)</span>
-        <span class="host-chip"><i class="fab fa-python"></i> PythonAnywhere</span>
-        <span class="host-chip"><i class="fab fa-google"></i> Google Cloud Run</span>
+        <span class="host-chip"><i class="fab fa-python"></i> Flask Framework</span>
+        <span class="host-chip"><i class="fas fa-database"></i> Pandas DataFrame</span>
       </div>
     </div>
 
     <!-- SKILLS THIS PROVES -->
     <h2>💡 What This Proves to Clients</h2>
     <ul>
-      <li><strong>Web Scraping:</strong> I can extract structured data from any public HTML source — competitor sites, business directories, real estate listings, pricing pages.</li>
-      <li><strong>Data Engineering:</strong> Raw scraped data is messy. I clean, normalize, deduplicate, and enrich it automatically with Pandas.</li>
-      <li><strong>Business Intelligence:</strong> I don't just deliver a CSV — I build live dashboards that update automatically so you can make decisions in real time.</li>
-      <li><strong>API Integration:</strong> The pipeline connects to Google Sheets API, pushing data programmatically without any manual steps.</li>
+      <li><strong>API Integration:</strong> I can connect to complex REST APIs (Socrata, GraphQL, proprietary APIs), handle authentication, rate limiting, and pagination.</li>
+      <li><strong>Data Engineering (ETL):</strong> Raw JSON is hard to read. I build Pandas pipelines to Extract, Transform, and Load it into business-ready formats.</li>
+      <li><strong>Business Intelligence:</strong> I connect these pipelines directly to tools like Looker Studio, turning invisible data into actionable visual dashboards for sales teams.</li>
+      <li><strong>Reliability:</strong> API data is far more reliable than web scraping. I design systems that won't break when a website changes its HTML.</li>
     </ul>
 
     <!-- SERVICES -->
@@ -509,30 +484,30 @@
     <div class="services">
       <div class="svc-card">
         <span class="price">$400–$700</span>
-        <h4>Competitor Price Monitor</h4>
-        <p>Daily scraper tracking prices across 5 competitor sites. Changes flagged on a live dashboard with Zapier email alerts.</p>
+        <h4>Public Data Lead Generator</h4>
+        <p>A daily pipeline pulling new business registrations, property data, or permits from government Open Data APIs, synced to Google Sheets.</p>
       </div>
       <div class="svc-card">
         <span class="price">$300–$500</span>
-        <h4>B2B Lead List Generator</h4>
-        <p>Custom scraper pulling business names, cities, and ratings from public directories. Clean CSV or Google Sheet CRM-ready.</p>
+        <h4>CRM Enrichment Pipeline</h4>
+        <p>A script that takes your existing customer database and hits APIs (like Clearbit or Hunter) to fill in missing details like company size and LinkedIn profiles.</p>
       </div>
       <div class="svc-card">
-        <span class="price">$350–$600</span>
-        <h4>Real Estate Market Tracker</h4>
-        <p>Pipeline aggregating listings by ZIP, filtering by price range, and showing median price trends on a live dashboard.</p>
+        <span class="price">$500–$800</span>
+        <h4>Competitor Intelligence Dashboard</h4>
+        <p>An automated pipeline querying market data APIs to display live competitor pricing, funding rounds, or product updates in Looker Studio.</p>
       </div>
       <div class="svc-card">
-        <span class="price">$150/mo</span>
-        <h4>Maintenance Retainer</h4>
-        <p>Monthly upkeep ensuring your scrapers keep running when target sites update their HTML structure.</p>
+        <span class="price">$200–$400</span>
+        <h4>Custom API Connectors</h4>
+        <p>Need data moved from your SaaS tool (e.g. Stripe, Shopify) into a custom dashboard? I can build the Python script to do it automatically.</p>
       </div>
     </div>
 
     <!-- CTA -->
     <div class="cs-footer-cta">
       <h3>Want this built for your business?</h3>
-      <p>I can deliver a custom scraping pipeline and live dashboard within 48–72 hours.</p>
+      <p>I can connect any API to your dashboard and automate your lead flow in 48–72 hours.</p>
       <a href="index.html#contact-form" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Get a Free Quote</a>
       <a href="index.html" class="btn btn-outline btn-large" style="margin-left:14px;"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
     </div>
