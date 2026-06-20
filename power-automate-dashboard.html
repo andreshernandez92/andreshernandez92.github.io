@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Google Local Search Scraper | Andres Hernandez</title>
-  <meta name="description" content="Automated Python pipeline that scrapes Google Maps local results via SERP APIs, cleans them with Pandas, and feeds a Looker Studio dashboard." />
+  <title>Power Automate Cross-Platform Dashboard | Andres Hernandez</title>
+  <meta name="description" content="Automated Microsoft Power Automate flow bridging MS Forms and Teams with Google Sheets and Looker Studio." />
 
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -159,41 +159,6 @@
     }
     .stat .lbl { font-size: 1.3rem; color: #666; margin-top: 5px; }
 
-    /* ── LEADS TABLE ────────────────────────────────────── */
-    .table-wrap {
-      background: rgba(0,0,0,0.22);
-      border: 1px solid rgba(0,212,255,0.18);
-      border-radius: 14px;
-      overflow: hidden;
-      margin: 28px 0;
-    }
-    .table-head {
-      background: rgba(0,212,255,0.07);
-      padding: 14px 22px;
-      font-size: 1.35rem;
-      color: var(--primary);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 1px solid rgba(0,212,255,0.13);
-    }
-    table.leads-tbl { width: 100%; border-collapse: collapse; }
-    table.leads-tbl th {
-      background: rgba(0,212,255,0.04); color: #888; padding: 11px 18px; text-align: left;
-      font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    table.leads-tbl td { padding: 12px 18px; color: #c4c4d8; font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    table.leads-tbl tr:last-child td { border-bottom: none; }
-    table.leads-tbl tr:hover td { background: rgba(0,212,255,0.03); }
-    
-    .badge { display: inline-block; padding: 3px 11px; border-radius: 20px; font-size: 1.2rem; font-weight: 600; }
-    .b-green  { background: rgba(46,213,115,0.13); color: #2ed573; }
-    .b-yellow { background: rgba(255,200,0,0.13);  color: #ffc800; }
-    .b-red    { background: rgba(255,71,87,0.13);  color: #ff4757; }
-    .b-gray   { background: rgba(255,255,255,0.08); color: #999; }
-
     /* ── DEMO SECTION ───────────────────────────────────── */
     .demo-section {
       background: rgba(0,0,0,0.28);
@@ -240,18 +205,17 @@
   <!-- HERO -->
   <section class="cs-hero">
     <div class="container fade-in">
-      <div class="hero-badge"><i class="fas fa-map-marker-alt"></i> Local SEO & Lead Gen</div>
-      <h1>Google Local Search <span class="highlight">Scraper</span></h1>
+      <div class="hero-badge"><i class="fas fa-project-diagram"></i> Workflow Automation</div>
+      <h1>Power Automate <span class="highlight">Cross-Platform Bridge</span></h1>
       <p class="hero-subtitle" style="margin-top:18px; font-size:1.8rem; max-width:800px; margin-left:auto; margin-right:auto;">
-        A Python pipeline that bypasses Google's anti-bot protections using SERP APIs to scrape local maps results, cleans the data, and syncs it to a live Looker Studio sales dashboard.
+        An automated flow bridging the gap between enterprise Microsoft 365 tools and powerful Google Looker Studio dashboards—eliminating manual data entry entirely.
       </p>
       <div class="tag-strip">
-        <span>Python 3</span>
-        <span>SERP APIs</span>
-        <span>Google Maps</span>
-        <span>Pandas</span>
+        <span>Power Automate</span>
+        <span>MS Forms</span>
+        <span>Microsoft Teams</span>
+        <span>Google Sheets</span>
         <span>Looker Studio</span>
-        <span>Data Engineering</span>
       </div>
       <div class="demo-cta-strip">
         <a href="https://lookerstudio.google.com" target="_blank" class="btn-demo">
@@ -268,122 +232,49 @@
   <section class="cs-content fade-in">
 
     <!-- PIPELINE STEPS -->
-    <h2>⚙️ How the Pipeline Works</h2>
-    <p>Scraping Google directly with simple Python scripts results in instant IP bans and CAPTCHAs. This professional pipeline uses dedicated SERP APIs to guarantee 100% extraction success for local businesses.</p>
+    <h2>⚙️ How the Automation Works</h2>
+    <p>Many businesses are locked into Microsoft for operations (Forms, Teams) but prefer Google for reporting (Looker Studio). This pipeline acts as a seamless, automated bridge between both ecosystems.</p>
 
     <div class="pipeline">
       <div class="p-step">
         <div class="num">1</div>
-        <i class="fas fa-robot"></i>
-        <h4>Bypass</h4>
-        <p>Python script hits a SERP API, which handles proxies and CAPTCHAs to extract the Google Local Maps pack.</p>
+        <i class="fab fa-microsoft"></i>
+        <h4>Capture</h4>
+        <p>A client submits a lead request via a secure Microsoft Form.</p>
       </div>
       <div class="p-step">
         <div class="num">2</div>
-        <i class="fas fa-broom"></i>
-        <h4>Clean</h4>
-        <p>Pandas converts deeply nested JSON into flat tables and extracts exact ratings and review counts.</p>
+        <i class="fas fa-project-diagram"></i>
+        <h4>Process</h4>
+        <p>Power Automate triggers instantly, extracting the critical data points dynamically.</p>
       </div>
       <div class="p-step">
         <div class="num">3</div>
-        <i class="fas fa-calculator"></i>
-        <h4>Score</h4>
-        <p>Custom logic assigns a Lead Score based on the restaurant's rating and review volume.</p>
+        <i class="fas fa-users"></i>
+        <h4>Alert</h4>
+        <p>An automated adaptive card is posted in Microsoft Teams, notifying the sales team.</p>
       </div>
       <div class="p-step">
         <div class="num">4</div>
-        <i class="fas fa-chart-pie"></i>
-        <h4>Dashboard</h4>
-        <p>The clean dataset syncs to Google Sheets via `gspread`, powering a live Looker Studio view.</p>
+        <i class="fas fa-table"></i>
+        <h4>Bridge</h4>
+        <p>Power Automate pushes the data cleanly into a Google Sheet, instantly updating Looker Studio.</p>
       </div>
     </div>
 
     <!-- STATS -->
     <div class="stats">
-      <div class="stat"><span class="val">100%</span><div class="lbl">Success Rate</div></div>
-      <div class="stat"><span class="val">JSON</span><div class="lbl">Data Source</div></div>
-      <div class="stat"><span class="val">Automated</span><div class="lbl">Sheets Sync</div></div>
-      <div class="stat"><span class="val">0</span><div class="lbl">IP Bans</div></div>
-    </div>
-
-    <!-- SAMPLE OUTPUT TABLE -->
-    <h2>📋 Scraped Google Local Data (Cleaned)</h2>
-    <p>This is the structured Pandas output retrieved after querying "Restaurants near me" in Austin, TX. The <strong>Lead Score</strong> is assigned automatically based on review volume and star ratings.</p>
-
-    <div class="table-wrap">
-      <div class="table-head">
-        <i class="fas fa-search" style="margin-right:8px;"></i>
-        Query Result — <strong style="color:#fff; margin-left:4px;">"Restaurants near Austin, TX"</strong>
-      </div>
-      <table class="leads-tbl">
-        <thead>
-          <tr>
-            <th>Business Name</th>
-            <th>Rating</th>
-            <th>Reviews</th>
-            <th>Phone</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Franklin Barbecue</strong></td>
-            <td>⭐ 4.7</td>
-            <td>6,892</td>
-            <td>(512) 653-1187</td>
-            <td><span class="badge b-green">🔥 High Volume Leader</span></td>
-          </tr>
-          <tr>
-            <td><strong>Uchi</strong></td>
-            <td>⭐ 4.8</td>
-            <td>3,410</td>
-            <td>(512) 916-4808</td>
-            <td><span class="badge b-green">🔥 High Volume Leader</span></td>
-          </tr>
-          <tr>
-            <td><strong>Launderette</strong></td>
-            <td>⭐ 4.6</td>
-            <td>1,240</td>
-            <td>(512) 382-1599</td>
-            <td><span class="badge b-green">🔥 High Volume Leader</span></td>
-          </tr>
-          <tr>
-            <td><strong>The Peached Tortilla</strong></td>
-            <td>⭐ 4.5</td>
-            <td>1,980</td>
-            <td>(512) 330-4439</td>
-            <td><span class="badge b-green">🔥 High Volume Leader</span></td>
-          </tr>
-          <tr>
-            <td><strong>Suerte</strong></td>
-            <td>⭐ 4.6</td>
-            <td>1,150</td>
-            <td>(512) 953-0092</td>
-            <td><span class="badge b-green">🔥 High Volume Leader</span></td>
-          </tr>
-          <tr>
-            <td><strong>P. Terry's Burger Stand</strong></td>
-            <td>⭐ 4.4</td>
-            <td>850</td>
-            <td>(512) 399-5374</td>
-            <td><span class="badge b-yellow">✅ Solid Prospect</span></td>
-          </tr>
-          <tr>
-            <td><strong>Local Slice Pizza</strong></td>
-            <td>⭐ 3.8</td>
-            <td>120</td>
-            <td>(512) 555-0198</td>
-            <td><span class="badge b-red">🚨 Needs Reputation Mgmt</span></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="stat"><span class="val">10+</span><div class="lbl">Hours Saved Weekly</div></div>
+      <div class="stat"><span class="val">0</span><div class="lbl">Manual Entry Errors</div></div>
+      <div class="stat"><span class="val">Free</span><div class="lbl">Standard Connectors</div></div>
+      <div class="stat"><span class="val">Live</span><div class="lbl">Data Sync</div></div>
     </div>
 
     <!-- DEMO SECTION -->
     <h2>🚀 Dashboard Output</h2>
     <div class="demo-section">
       <h3>Direct to Business Intelligence</h3>
-      <p>Instead of manually downloading CSV files, this Python script uses the <code>gspread</code> library to authenticate and push the cleaned Pandas dataframe directly to a Google Sheet. Looker Studio reads from this sheet to provide a live, visual interface for the sales team.</p>
+      <p>Instead of sales reps manually copying emails into Excel files to build reports, this Power Automate flow handles the ETL (Extract, Transform, Load) process. Looker Studio reads from the destination Google Sheet to provide a live, visual interface for leadership.</p>
       <a href="https://lookerstudio.google.com" target="_blank" class="btn-demo" style="margin-top:10px;">
         <i class="fas fa-chart-line"></i> View Live Dashboard
       </a>
@@ -392,35 +283,35 @@
     <!-- SKILLS THIS PROVES -->
     <h2>💡 What This Proves to Clients</h2>
     <ul>
-      <li><strong>Advanced Web Scraping:</strong> I know how to use industry-standard tools (SERP APIs, proxy rotators) to bypass Google's aggressive anti-bot protections without getting banned.</li>
-      <li><strong>Data Engineering (ETL):</strong> Extracting the specific "Local Pack" from a massive Google JSON payload requires strong parsing skills. I use Pandas to flatten and clean the data.</li>
-      <li><strong>Business Intelligence:</strong> I connect these pipelines directly to tools like Looker Studio, turning invisible JSON data into actionable visual dashboards.</li>
+      <li><strong>Power Automate Expertise:</strong> I know how to navigate the Microsoft Power Platform to build robust, multi-step cloud flows.</li>
+      <li><strong>Cross-Platform Integration:</strong> I don't just stay in one ecosystem. I know how to securely connect Microsoft tools to Google APIs using standard connectors.</li>
+      <li><strong>Business Process Automation:</strong> I focus on building flows that save tangible hours (like eliminating dual data-entry for sales teams).</li>
     </ul>
 
     <!-- SERVICES -->
     <h2>💼 Services I Can Build for You</h2>
     <div class="services">
       <div class="svc-card">
-        <span class="price">$300–$500</span>
-        <h4>Google Maps Scraper</h4>
-        <p>I will scrape 1,000+ local businesses from Google Maps in any city, providing clean CSVs with names, ratings, and phone numbers.</p>
+        <span class="price">$250–$400</span>
+        <h4>Cross-Platform Data Bridge</h4>
+        <p>I will connect your Microsoft tools (Outlook, Forms, SharePoint) directly to your Google Workspace (Sheets, Looker Studio) with zero manual data entry.</p>
       </div>
       <div class="svc-card">
-        <span class="price">$400–$700</span>
-        <h4>Reputation Dashboard</h4>
-        <p>A daily scraper tracking your competitors' Google ratings and review counts, pushed to a live Looker Studio dashboard.</p>
+        <span class="price">$150–$300</span>
+        <h4>Automated Teams Alerts</h4>
+        <p>Intelligent Microsoft Teams notifications that alert your staff the second a high-value lead fills out a form or signs a contract.</p>
       </div>
       <div class="svc-card">
-        <span class="price">$350–$600</span>
-        <h4>B2B Lead Enrichment</h4>
-        <p>A pipeline extracting local businesses and categorizing them by review count so your sales team knows exactly who needs your reputation management services.</p>
+        <span class="price">$400–$800</span>
+        <h4>Looker Studio BI Dashboard</h4>
+        <p>I will turn your messy spreadsheets into a live, professional dashboard that updates automatically every time an automation runs.</p>
       </div>
     </div>
 
     <!-- CTA -->
     <div class="cs-footer-cta">
-      <h3>Need clean data from Google?</h3>
-      <p>I can scrape Google Search, Maps, or Shopping and automate your lead flow in 48–72 hours.</p>
+      <h3>Stop copying and pasting data.</h3>
+      <p>I can connect your tools and automate your reporting pipeline in 48–72 hours.</p>
       <a href="index.html#contact-form" class="btn btn-primary btn-large"><i class="fas fa-envelope"></i> Get a Free Quote</a>
       <a href="index.html" class="btn btn-outline btn-large" style="margin-left:14px;"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
     </div>
