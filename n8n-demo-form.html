@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>n8n Lead Capture — Demo Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+      gap: 24px;
+    }
+
+    /* ── TOP BADGE ───────────────────────────────────── */
+    .dev-badge {
+      background: rgba(234,96,2,0.08);
+      border: 1px solid rgba(234,96,2,0.25);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ea6002;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dev-badge .dot {
+      width: 8px; height: 8px;
+      background: #ea6002;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* ── MAIN CARD ───────────────────────────────────── */
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(234,96,2,0.18);
+      border-radius: 20px;
+      padding: 44px 40px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, #ea6002, #ffb347);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #fff; font-weight: 900;
+      flex-shrink: 0;
+    }
+    .logo-name { font-size: 17px; font-weight: 700; color: #fff; }
+    .logo-sub  { font-size: 11px; color: #ea6002; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1px; }
+
+    h1 { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .subtitle { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 30px; }
+
+    /* ── FORM FIELDS ─────────────────────────────────── */
+    .form-group { margin-bottom: 16px; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 7px;
+    }
+    label .req { color: #ea6002; }
+    input, textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input::placeholder, textarea::placeholder { color: #444; }
+    input:focus, textarea:focus {
+      border-color: rgba(234,96,2,0.5);
+      box-shadow: 0 0 0 3px rgba(234,96,2,0.08);
+    }
+    textarea { resize: vertical; min-height: 90px; }
+
+    /* ── BUTTONS ─────────────────────────────────────── */
+    .btn-row { display: flex; gap: 10px; margin-top: 20px; }
+
+    .btn {
+      flex: 1;
+      padding: 14px 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    }
+    .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none !important; }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ea6002, #ffb347);
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(234,96,2,0.3);
+    }
+    .btn-primary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(234,96,2,0.45); }
+
+    .btn-danger {
+      background: rgba(255,70,70,0.1);
+      border: 1px solid rgba(255,70,70,0.3);
+      color: #ff6b6b;
+    }
+    .btn-danger:hover:not(:disabled) { background: rgba(255,70,70,0.18); transform: translateY(-2px); }
+
+    /* ── STATUS BOX ──────────────────────────────────── */
+    .status-box {
+      display: none;
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 18px;
+      line-height: 1.55;
+      animation: fadeUp 0.3s ease;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .status-box.show { display: block; }
+    .status-box.loading { background: rgba(234,96,2,0.07); border: 1px solid rgba(234,96,2,0.2); color: #ea6002; }
+    .status-box.success { background: rgba(74,222,128,0.07); border: 1px solid rgba(74,222,128,0.22); color: #4ade80; }
+    .status-box.error   { background: rgba(255,107,107,0.07); border: 1px solid rgba(255,107,107,0.22); color: #ff6b6b; }
+
+    .status-title { font-weight: 800; font-size: 15px; margin-bottom: 5px; }
+    .status-detail { font-size: 13px; opacity: 0.85; }
+
+    .spinner {
+      display: inline-block;
+      width: 13px; height: 13px;
+      border: 2px solid currentColor;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.65s linear infinite;
+      vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── DIVIDER CARD (ERROR TEST) ───────────────────── */
+    .error-card {
+      background: rgba(255,70,70,0.04);
+      border: 1px solid rgba(255,70,70,0.14);
+      border-radius: 16px;
+      padding: 28px 32px;
+      width: 100%;
+      max-width: 500px;
+    }
+    .error-card h3 {
+      font-size: 16px; font-weight: 800; color: #ff6b6b;
+      display: flex; align-items: center; gap: 9px;
+      margin-bottom: 8px;
+    }
+    .error-card p { font-size: 13px; color: #888; line-height: 1.65; margin-bottom: 18px; }
+    .error-card .test-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn-test {
+      flex: 1;
+      min-width: 160px;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 9px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-test:hover { transform: translateY(-2px); }
+    .btn-test-bad {
+      background: rgba(255,107,107,0.12);
+      border: 1px solid rgba(255,107,107,0.3);
+      color: #ff6b6b;
+    }
+    .btn-test-good {
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.25);
+      color: #4ade80;
+    }
+
+    .error-status {
+      margin-top: 14px;
+      display: none;
+      font-size: 13px;
+      padding: 12px 16px;
+      border-radius: 9px;
+      font-weight: 600;
+    }
+    .error-status.show { display: block; animation: fadeUp 0.3s ease; }
+    .error-status.ok  { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2); color: #4ade80; }
+    .error-status.bad { background: rgba(255,107,107,0.08); border: 1px solid rgba(255,107,107,0.2); color: #ff6b6b; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    .footer { font-size: 12px; color: #333; text-align: center; }
+    .footer span { color: #ea6002; }
+  </style>
+</head>
+<body>
+
+  <div class="dev-badge">
+    <span class="dot"></span>
+    n8n Webhook — Live Demo
+  </div>
+
+  <!-- ══════════════════════════════ MAIN FORM ══════════════════════════════ -->
+  <div class="card">
+    <div class="logo-row">
+      <div class="logo-icon">AH</div>
+      <div>
+        <div class="logo-name">Andres Hernandez</div>
+        <div class="logo-sub">Automation Engineer</div>
+      </div>
+    </div>
+
+    <h1>Get in Touch 👋</h1>
+    <p class="subtitle">Submit this form and watch the automation work in real-time — your lead is logged in Google Sheets and you'll receive an email alert within seconds.</p>
+
+    <form id="leadForm" novalidate>
+      <div class="form-group">
+        <label>Full Name <span class="req">*</span></label>
+        <input id="fname" type="text" placeholder="e.g. Maria Garcia" />
+      </div>
+      <div class="form-group">
+        <label>Email Address <span class="req">*</span></label>
+        <input id="femail" type="email" placeholder="e.g. maria@company.com" />
+      </div>
+      <div class="form-group">
+        <label>Company Name</label>
+        <input id="fcompany" type="text" placeholder="e.g. Acme Corp (optional)" />
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea id="fmessage" placeholder="Tell me about your automation needs..."></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" class="btn btn-primary" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </div>
+    </form>
+
+    <div id="mainStatus" class="status-box"></div>
+  </div>
+
+  <!-- ══════════════════════════════ ERROR TEST CARD ══════════════════════════════ -->
+  <div class="error-card">
+    <h3><i class="fas fa-shield-alt"></i> Error Handler Testing Panel</h3>
+    <p>
+      This panel is for demo purposes. Use these buttons to verify that the
+      <strong style="color:#fff;">Error Handler Workflow</strong> in n8n is working correctly.
+      The "Send Bad Data" button deliberately sends an invalid email, which the
+      Code node will throw an error on — triggering the error workflow.
+    </p>
+    <div class="test-row">
+      <button class="btn-test btn-test-good" id="testGoodBtn">
+        <i class="fas fa-check-circle"></i> Send Valid Lead
+      </button>
+      <button class="btn-test btn-test-bad" id="testBadBtn">
+        <i class="fas fa-bug"></i> Send Bad Data (Trigger Error)
+      </button>
+    </div>
+    <div id="errorStatus" class="error-status"></div>
+  </div>
+
+  <p class="footer">Powered by <span>n8n self-hosted automation</span> — $0/month</p>
+
+  <script>
+    const WEBHOOK_URL = "http://localhost:5678/webhook/lead-capture";
+
+    // ── Utility: POST to webhook ──────────────────────────────────────────
+    async function postToWebhook(payload) {
+      const response = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      return response;
+    }
+
+    // ── MAIN FORM SUBMIT ──────────────────────────────────────────────────
+    document.getElementById("leadForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const name    = document.getElementById("fname").value.trim();
+      const email   = document.getElementById("femail").value.trim();
+      const company = document.getElementById("fcompany").value.trim();
+      const message = document.getElementById("fmessage").value.trim();
+      const btn     = document.getElementById("submitBtn");
+      const status  = document.getElementById("mainStatus");
+
+      if (!name || !email) {
+        showStatus(status, "error", "⚠️ Missing fields", "Please fill in your name and email before submitting.");
+        return;
+      }
+
+      // Loading state
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Sending...';
+      showStatus(status, "loading", "⏳ Sending to n8n...", "Your data is being processed by the automation.");
+
+      try {
+        const res = await postToWebhook({ name, email, company, message, source: "Demo Form" });
+
+        if (res.ok || res.status === 200) {
+          btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+          showStatus(status, "success",
+            "✅ Automation triggered successfully!",
+            "Your lead was logged in Google Sheets and you should receive an email alert within seconds."
+          );
+          document.getElementById("leadForm").reset();
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+          }, 3000);
+        } else {
+          throw new Error("HTTP " + res.status);
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        showStatus(status, "error",
+          "❌ Could not reach n8n",
+          "Make sure n8n is running on localhost:5678 and the workflow is active (toggle ON)."
+        );
+      }
+    });
+
+    // ── GOOD TEST BUTTON ──────────────────────────────────────────────────
+    document.getElementById("testGoodBtn").addEventListener("click", async function() {
+      const btn = this;
+      const status = document.getElementById("errorStatus");
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Sending...';
+      showErrorStatus(status, "ok", "⏳ Sending valid test lead...");
+
+      try {
+        const res = await postToWebhook({
+          name: "Test User",
+          email: "testuser@google.com",
+          company: "Google Inc.",
+          source: "Error Test Panel"
+        });
+        if (res.ok) {
+          showErrorStatus(status, "ok", "✅ Valid lead sent! Check Google Sheets — a new row should appear with Category = Enterprise.");
+        } else {
+          throw new Error("HTTP " + res.status);
+        }
+      } catch (err) {
+        showErrorStatus(status, "bad", "❌ Could not reach n8n. Make sure it's running.");
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check-circle"></i> Send Valid Lead';
+      }
+    });
+
+    // ── BAD DATA TEST BUTTON ──────────────────────────────────────────────
+    document.getElementById("testBadBtn").addEventListener("click", async function() {
+      const btn = this;
+      const status = document.getElementById("errorStatus");
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Triggering error...';
+      showErrorStatus(status, "bad", "⏳ Sending invalid data to n8n...");
+
+      try {
+        // Deliberately send a malformed email to throw the Code node error
+        const res = await postToWebhook({
+          name: "Bad Data Test",
+          email: "this-is-not-an-email",
+          source: "Error Test Panel — deliberate failure"
+        });
+        // n8n will return 500 or an error when the Code node throws
+        showErrorStatus(status, "bad",
+          "🐛 Bad data sent! The Code node should have thrown an error. " +
+          "Check your Error Handler workflow — you should receive an urgent alert email " +
+          "and a new row in your Error Log sheet."
+        );
+      } catch (err) {
+        showErrorStatus(status, "bad",
+          "🐛 Bad data sent! n8n rejected the request. " +
+          "Check the Error Handler workflow for the failure log."
+        );
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-bug"></i> Send Bad Data (Trigger Error)';
+      }
+    });
+
+    // ── Helper: show status ───────────────────────────────────────────────
+    function showStatus(el, type, title, detail) {
+      el.className = "status-box show " + type;
+      el.innerHTML = `<div class="status-title">${title}</div><div class="status-detail">${detail}</div>`;
+    }
+
+    function showErrorStatus(el, type, msg) {
+      el.className = "error-status show " + type;
+      el.textContent = msg;
+    }
+  </script>
+</body>
+</html>
