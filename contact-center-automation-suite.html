@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Center Admin Automation Suite | Andres Hernandez</title>
+  <meta name="description" content="Case study: an Excel, VBA and SeleniumVBA automation suite that reads and writes contact center dialer settings in bulk, plus a 7-campaign outbound rollout built on it." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style/styles.css" />
+  <link rel="stylesheet" href="./style/case-study.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.svg" alt="Andres Hernandez" /></a>
+      <ul class="nav-links cs-nav">
+        <li><a href="index.html#projects" class="nav-cta"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="cs-hero">
+    <div class="container fade-in">
+      <div class="hero-badge"><i class="fas fa-robot"></i> Browser Automation</div>
+      <h1>Contact Center Admin Automation Suite</h1>
+      <p class="hero-subtitle" style="margin-top:18px; font-size:1.8rem; max-width:820px; margin-left:auto; margin-right:auto;">A web-only dialer had no bulk tools, so every agent, queue and permission change was done by hand. I built an automation suite that does it from a spreadsheet.</p>
+      <div class="tag-strip"><span>Excel</span><span>VBA</span><span>SeleniumVBA</span><span>JavaScript</span><span>Python</span><span>BeautifulSoup</span><span>Node.js</span><span>jsdom</span><span>CSV pipelines</span></div>
+    </div>
+  </section>
+
+  <section class="cs-content fade-in">
+    <div class="privacy-note"><i class="fas fa-user-shield"></i><span>Production work. Employer, client, colleague and customer details have been removed; only the approach and the technology are described.</span></div>
+
+    <div class="cs-meta"><div><h4>My role</h4><p>Designer, developer and maintainer</p></div><div><h4>Environment</h4><p>Cloud dialer and CRM used by a healthcare-insurance sales floor</p></div><div><h4>Size</h4><p>11 macros in 6 categories</p></div><div><h4>Users</h4><p>IT and operations admins</p></div></div>
+    <div class="stats"><div class="stat"><span class="val">11</span><div class="lbl">Macros</div></div><div class="stat"><span class="val">6</span><div class="lbl">Admin categories</div></div><div class="stat"><span class="val">7</span><div class="lbl">Campaigns rolled out</div></div></div>
+
+    <h2>The problem</h2>
+    <p>The contact center's dialer and CRM is administered through a web interface with no bulk editing for many settings. Adding agents, changing queue delays, updating skills or auditing permissions meant hundreds of clicks, and mistakes were easy to make and hard to spot.</p>
+    <p><strong>Objective:</strong> Let admins read the current state into Excel, edit it there, and push changes back to the platform safely and repeatably.</p>
+
+    <h2>The plan at a glance</h2>
+    <div class="pipeline"><div class="p-step"><div class="num">1</div><i class="fas fa-code"></i><h4>Capture HTML</h4><p>Save the live page structure.</p></div><div class="p-step"><div class="num">2</div><i class="fas fa-flask"></i><h4>Test offline</h4><p>Validate selectors in Python and Node.</p></div><div class="p-step"><div class="num">3</div><i class="fas fa-file-excel"></i><h4>Write VBA</h4><p>Read and update macro pairs.</p></div><div class="p-step"><div class="num">4</div><i class="fas fa-check-double"></i><h4>Validate</h4><p>Structural checks on every change.</p></div><div class="p-step"><div class="num">5</div><i class="fas fa-clipboard-check"></i><h4>Audit</h4><p>Read back and confirm the result.</p></div></div>
+
+    <h2 class="step-section">Step by step</h2>
+    
+    <div class="step-block">
+      <div class="step-num">1</div>
+      <h3>Design the suite around read and update pairs</h3>
+      
+      <ul><li>Grouped macros by category (Skills, Queues, Permissions, Users, Phone, Campaigns) and named them Category_Action, for example Queues_ReadUserSettings and Queues_UpdateUserSettings.</li><li>Every update macro has a read macro, so admins always start from the real current state, not from memory.</li><li>Shared helpers and URL maps are reused across each category to keep behavior consistent.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">2</div>
+      <h3>Capture the live page and test logic offline</h3>
+      <p>Testing against the live system is slow and risky. Testing against saved copies of the page is fast and safe.</p>
+      <ul><li>Saved the platform's live HTML for each screen the automation touches.</li><li>Tested the JavaScript that finds and clicks elements against those captures using Python (BeautifulSoup) and Node.js (jsdom) before writing any VBA.</li><li>Only then wrote the VBA, which drives Chrome through SeleniumVBA and injects the tested JavaScript.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">3</div>
+      <h3>Engineer for a user interface that keeps changing</h3>
+      
+      <ul><li>When the vendor moved permissions from a slide-out drawer to an inline component, rewrote that module with name-based toggles and added the new feature and category columns.</li><li>Only click buttons that are actually visible, so hidden tabs are never triggered by accident.</li><li>Match results by prefix instead of exact text, because the platform sometimes appends extra details.</li><li>Narrowed exclusion filters after finding that a broad text match was silently skipping valid records.</li></ul>
+      <div class="code-block"><code>&#x27; Click only a visible &quot;Save Changes&quot; button, then read the result by prefix
+Dim js As String, result As String
+js = &quot;const b=[...document.querySelectorAll(&#x27;button&#x27;)]&quot; &amp; _
+     &quot;.find(x=&gt;x.textContent.trim()===&#x27;Save Changes&#x27; &amp;&amp; x.offsetParent!==null);&quot; &amp; _
+     &quot;if(!b) return &#x27;NOT FOUND&#x27;; b.click(); return &#x27;UPDATED&#x27;;&quot;
+result = driver.ExecuteScript(js)
+If Left(result, 7) = &quot;UPDATED&quot; Then
+    ws.Cells(r, colStatus).Value = &quot;OK&quot;
+Else
+    ws.Cells(r, colStatus).Value = result
+End If</code></div><div class="bp-callout"><i class="fas fa-lightbulb"></i><div class="bp-text"><h4>Lesson: treat UI automation as fragile</h4><p>Vendor web apps change without notice. Keep page captures, re-test after every vendor release, and fail loudly instead of guessing.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">4</div>
+      <h3>Validate the code structure on every change</h3>
+      
+      <ul><li>After each significant edit, checked Sub/Function balance, duplicate names, line-continuation counts and line lengths across the single large module.</li><li>Kept changes small and re-tested each category on its own.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">5</div>
+      <h3>Use the suite for a 7-campaign outbound rollout</h3>
+      <p>Before the annual enrollment period, agents had to call their own existing customers in order of urgency. The dialer could not show the custom field that marked urgency on the call screen.</p>
+      <ul><li>Agreed with the vendor on a workaround: one outbound campaign per urgency value, with the new agent-assignment feature routing each lead only to its owning agent.</li><li>Transformed the source export into seven upload files and matched each customer's owner to their platform user ID.</li><li>Produced a review sheet for records that could not be matched, so nobody was dialed by the wrong agent.</li><li>Audited all seven campaigns afterwards with the Campaigns_ReadAll macro, including lead lists and voicemail settings.</li></ul>
+      <div class="bp-callout"><i class="fas fa-shield-alt"></i><div class="bp-text"><h4>Best practice: audit after every bulk change</h4><p>A bulk upload is only finished when a read-back confirms the platform holds what you intended.</p></div></div>
+    </div>
+
+    <h2>Outcome</h2>
+    <ul><li>Hours of repetitive clicking replaced by spreadsheet-driven updates.</li><li>Fewer configuration mistakes, because every change starts from a read of the real state.</li><li>A campaign rollout that worked around a platform limitation without waiting for a vendor feature.</li><li>Documented patterns that keep the suite working when the vendor changes its interface.</li></ul>
+
+    <h2>Technology used</h2>
+    <div class="req-grid"><div class="req-card"><i class="fas fa-file-excel"></i><h4>Excel & VBA</h4><p>Admin interface and orchestration.</p></div><div class="req-card"><i class="fab fa-chrome"></i><h4>SeleniumVBA</h4><p>Drives Chrome and injects JavaScript.</p></div><div class="req-card"><i class="fab fa-js"></i><h4>JavaScript</h4><p>DOM queries and visibility-safe clicks.</p></div><div class="req-card"><i class="fab fa-python"></i><h4>Python + BeautifulSoup</h4><p>Offline HTML validation.</p></div><div class="req-card"><i class="fab fa-node-js"></i><h4>Node.js + jsdom</h4><p>Offline JavaScript testing.</p></div><div class="req-card"><i class="fas fa-file-csv"></i><h4>CSV pipelines</h4><p>Lead list transformation and matching.</p></div></div>
+
+    <div class="cs-footer-cta">
+      <h3>Stuck clicking through a web app all day?</h3>
+      <p>If it has a screen, it can usually be automated safely.</p>
+      <a href="index.html#contact" class="btn btn-demo"><i class="fas fa-envelope"></i> Contact me</a>
+      <a href="index.html#projects" class="btn btn-outline" style="margin-left:14px; padding:15px 34px; font-size:1.6rem; border-radius:50px;"><i class="fas fa-arrow-left"></i> More projects</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container" style="text-align:center;">
+      <p style="font-size:1.4rem; color:#888;">&copy; 2026 Andres Hernandez. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

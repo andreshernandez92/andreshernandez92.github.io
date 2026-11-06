@@ -1,10 +1,10 @@
 // ========== TYPEWRITER EFFECT ==========
 const titles = [
-  "IT Support Specialist (Tier 2 / Tier 3)",
-  "Network Administrator (CCNA)",
-  "Business Automation Engineer",
-  "Cloud Administrator (M365 & Azure)",
-  "GoHighLevel & Make.com Expert"
+  "Night Shift IT Support (Tier 2 / Tier 3)",
+  "Microsoft 365 & Azure Administrator",
+  "VoIP & Contact Center Engineer",
+  "Network & Security (CCNA)",
+  "Automation Engineer (Python, Power Automate, n8n)"
 ];
 
 let titleIndex = 0;

@@ -530,3 +530,36 @@ footer p { font-size: 1.3rem; color: var(--text-muted); }
 .nav-overlay.active {
   opacity: 1; visibility: visible;
 }
+
+/* ========== NIGHT SHIFT & PROJECT GROUPS ========== */
+#night-shift { background: var(--bg-dark); }
+#services { background: var(--bg-section); }
+#projects { background: var(--bg-dark); }
+.projects-group-title {
+  font-size: 2rem; font-weight: 600; color: var(--text-bright);
+  margin: 5rem 0 2.4rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+}
+.projects-group-title:first-of-type { margin-top: 2rem; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid #4da6ff; outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+.project-links { margin-top: 1.8rem; }
+@media (max-width: 600px) {
+  .nav-links.cs-nav { position: static; width: auto; height: auto; max-width: none; background: none; padding: 0; flex-direction: row; box-shadow: none; transform: none; right: auto; }
+  .nav-links.cs-nav a { font-size: 1.2rem; }
+}
+
+/* ========== HERO HEADLINE, FEATURED, CONTACT ========== */
+.hero-content h1 { font-size: 5.2rem; }
+.hero-subtitle { max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+.project-card.featured { border-color: rgba(77,166,255,0.45); background: linear-gradient(180deg, rgba(77,166,255,0.06), var(--bg-card) 60%); }
+.contact-email { display: inline-block; font-size: 2.6rem; font-weight: 700; color: var(--text-bright); text-decoration: none; margin: 1rem 0 3rem; border-bottom: 2px solid rgba(77,166,255,0.5); }
+.contact-email:hover { border-bottom-color: #4da6ff; }
+.contact-avail { font-size: 1.4rem; color: var(--text-muted); margin-top: 3rem; }
+@media (max-width: 600px) { .hero-content h1 { font-size: 3.6rem; } .contact-email { font-size: 2rem; } }
+.hero-overlay { background: linear-gradient(135deg, rgba(0,0,0,0.93) 0%, rgba(13,13,13,0.86) 45%, rgba(20,20,20,0.92) 100%); }
+.hero-badge { color: #b8b8b8; }

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slack Workflow Migration to Azure Functions | Andres Hernandez</title>
+  <meta name="description" content="Case study: taking over a Slack approval app used by about 80 concurrent agents and moving its processing and sensitive files off Slack onto Azure Functions and SharePoint with short retention." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style/styles.css" />
+  <link rel="stylesheet" href="./style/case-study.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.svg" alt="Andres Hernandez" /></a>
+      <ul class="nav-links cs-nav">
+        <li><a href="index.html#projects" class="nav-cta"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="cs-hero">
+    <div class="container fade-in">
+      <div class="hero-badge"><i class="fas fa-cloud-arrow-up"></i> Cloud Development</div>
+      <h1>Slack Workflow Migration to Azure Functions</h1>
+      <p class="hero-subtitle" style="margin-top:18px; font-size:1.8rem; max-width:820px; margin-left:auto; margin-right:auto;">Keeping the agent experience in Slack while moving the processing and sensitive documents somewhere they belong.</p>
+      <div class="tag-strip"><span>Slack API</span><span>Azure Functions</span><span>SharePoint</span><span>Microsoft Graph</span><span>Data Retention</span><span>Serverless</span></div>
+    </div>
+  </section>
+
+  <section class="cs-content fade-in">
+    <div class="privacy-note"><i class="fas fa-user-shield"></i><span>Production work. Employer, client, colleague and customer details have been removed; only the approach and the technology are described.</span></div>
+
+    <div class="cs-meta"><div><h4>My role</h4><p>Took over the app, redesigned and rebuilt it</p></div><div><h4>Users</h4><p>About 80 concurrent agents</p></div><div><h4>Workload</h4><p>Each request runs 30 to 60 minutes of agent work</p></div><div><h4>Constraint</h4><p>Sensitive health data must not stay in Slack</p></div></div>
+    <div class="stats"><div class="stat"><span class="val">~80</span><div class="lbl">Concurrent agents</div></div><div class="stat"><span class="val">Minutes</span><div class="lbl">Until files leave Slack</div></div><div class="stat"><span class="val">3 days</span><div class="lbl">Data retention</div></div></div>
+
+    <h2>The problem</h2>
+    <p>A colleague had built a Slack app that agents use to request approvals during a sale. It worked, but uploaded documents stayed in Slack for days and the processing ran inside a tool not meant to hold sensitive data. The app was handed to me to maintain and improve.</p>
+    <p><strong>Objective:</strong> Keep the familiar Slack front end for agents, move processing to the cloud, and shrink how long sensitive data exists anywhere.</p>
+
+    <h2>The plan at a glance</h2>
+    <div class="pipeline"><div class="p-step"><div class="num">1</div><i class="fas fa-magnifying-glass"></i><h4>Assess</h4><p>Understand the existing app.</p></div><div class="p-step"><div class="num">2</div><i class="fas fa-scale-unbalanced"></i><h4>Choose platform</h4><p>Compare options.</p></div><div class="p-step"><div class="num">3</div><i class="fas fa-flask-vial"></i><h4>Build on trial</h4><p>Separate app, test data.</p></div><div class="p-step"><div class="num">4</div><i class="fas fa-hourglass-half"></i><h4>Retention</h4><p>Delete on a schedule.</p></div><div class="p-step"><div class="num">5</div><i class="fas fa-handshake"></i><h4>Decide hosting</h4><p>Final choice with leadership.</p></div></div>
+
+    <h2 class="step-section">Step by step</h2>
+    
+    <div class="step-block">
+      <div class="step-num">1</div>
+      <h3>Assess the existing app</h3>
+      
+      <ul><li>Mapped every Slack interaction, input and output the agents and managers rely on.</li><li>Identified where sensitive data was stored and for how long.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">2</div>
+      <h3>Choose the platform</h3>
+      
+      <ul><li>Evaluated Power Apps and Power Automate and ruled them out for this workload.</li><li>Chose Azure Functions for serverless processing, with approval to use Azure for the build.</li><li>Kept the logic as plain, deterministic code with no AI, so results are predictable and easy to audit.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">3</div>
+      <h3>Build it safely beside the live app</h3>
+      
+      <ul><li>Ported the whole app to Azure Functions on a trial subscription using test data only.</li><li>Registered it as a separate Slack app so the live workflow was never at risk during development.</li></ul>
+      <div class="bp-callout"><i class="fas fa-shield-alt"></i><div class="bp-text"><h4>Best practice: never develop on the production app</h4><p>A second Slack app with its own tokens lets you test freely and switch over only when it is proven.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">4</div>
+      <h3>Minimize sensitive data</h3>
+      
+      <ul><li>Uploaded documents are moved out of Slack into SharePoint within minutes and deleted from SharePoint after three days.</li><li>Request data kept in Azure is also retained for three days only.</li><li>Manager-facing results in Slack show only what managers need to act.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">5</div>
+      <h3>Plan the final hosting decision</h3>
+      
+      <ul><li>Prepared the working trial so leadership can choose final hosting with real results in hand, with the rule that sensitive data must not live in Slack.</li></ul>
+      
+    </div>
+
+    <h2>Outcome</h2>
+    <ul><li>A working serverless version of the app running beside the original.</li><li>Sensitive files out of Slack within minutes instead of days.</li><li>Defined three-day retention for files and request data.</li><li>A clear path to production hosting, decided with leadership.</li></ul>
+
+    <h2>Technology used</h2>
+    <div class="req-grid"><div class="req-card"><i class="fab fa-slack"></i><h4>Slack API</h4><p>Interactive app, events and file handling.</p></div><div class="req-card"><i class="fas fa-bolt"></i><h4>Azure Functions</h4><p>Serverless processing.</p></div><div class="req-card"><i class="fas fa-share-nodes"></i><h4>SharePoint</h4><p>Short-term document storage.</p></div><div class="req-card"><i class="fas fa-diagram-project"></i><h4>Microsoft Graph</h4><p>File moves and deletion.</p></div><div class="req-card"><i class="fas fa-clock-rotate-left"></i><h4>Retention</h4><p>Scheduled three-day cleanup.</p></div><div class="req-card"><i class="fas fa-code-branch"></i><h4>Deterministic code</h4><p>Rule-based logic, no AI.</p></div></div>
+
+    <div class="cs-footer-cta">
+      <h3>Need a workflow moved to the cloud without disrupting users?</h3>
+      <p>I rebuild tools side by side and switch over only when they are proven.</p>
+      <a href="index.html#contact" class="btn btn-demo"><i class="fas fa-envelope"></i> Contact me</a>
+      <a href="index.html#projects" class="btn btn-outline" style="margin-left:14px; padding:15px 34px; font-size:1.6rem; border-radius:50px;"><i class="fas fa-arrow-left"></i> More projects</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container" style="text-align:center;">
+      <p style="font-size:1.4rem; color:#888;">&copy; 2026 Andres Hernandez. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

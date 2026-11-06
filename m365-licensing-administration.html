@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microsoft 365 Administration & Licensing Control | Andres Hernandez</title>
+  <meta name="description" content="Case study: Microsoft 365 licensing audit and cost control, Entra ID identity, Exchange Online mail flow controls, SharePoint, SPFx development and Power Platform in a regulated multi-tenant environment." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style/styles.css" />
+  <link rel="stylesheet" href="./style/case-study.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.svg" alt="Andres Hernandez" /></a>
+      <ul class="nav-links cs-nav">
+        <li><a href="index.html#projects" class="nav-cta"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="cs-hero">
+    <div class="container fade-in">
+      <div class="hero-badge"><i class="fas fa-cloud"></i> Microsoft 365 & Azure</div>
+      <h1>Microsoft 365 Administration & Licensing Control</h1>
+      <p class="hero-subtitle" style="margin-top:18px; font-size:1.8rem; max-width:820px; margin-left:auto; margin-right:auto;">Running Microsoft 365 across two tenants in a regulated contact center: cutting license waste, tightening who can do what, and building tools on the platform the company already pays for.</p>
+      <div class="tag-strip"><span>Microsoft 365</span><span>Entra ID</span><span>Licensing</span><span>Exchange Online</span><span>SharePoint</span><span>SPFx</span><span>Power Apps</span><span>Power Automate</span><span>PowerShell / Graph</span></div>
+    </div>
+  </section>
+
+  <section class="cs-content fade-in">
+    <div class="privacy-note"><i class="fas fa-user-shield"></i><span>Production work. Employer, client, colleague and customer details have been removed; only the approach and the technology are described.</span></div>
+
+    <div class="cs-meta"><div><h4>My role</h4><p>Tenant administrator and builder</p></div><div><h4>Environment</h4><p>Two Microsoft 365 tenants, Business Standard</p></div><div><h4>Compliance</h4><p>Healthcare data, HIPAA and SOC 2 drivers</p></div><div><h4>Users</h4><p>Remote contact center agents and staff</p></div></div>
+    <div class="stats"><div class="stat"><span class="val">50 → 25</span><div class="lbl">Licenses after cleanup</div></div><div class="stat"><span class="val">2</span><div class="lbl">Tenants managed</div></div><div class="stat"><span class="val">5</span><div class="lbl">Power Automate flows</div></div><div class="stat"><span class="val">0</span><div class="lbl">Premium licenses needed</div></div></div>
+
+    <h2>The problem</h2>
+    <p>The company operated two Microsoft 365 tenants: its own and one for a client business it runs operations for. Licenses had been bought over time without a clear owner, so the subscriptions on the bill did not match what users actually had assigned.</p><p>At the same time, agents needed mailboxes to sign in to their daily apps, managers wanted control over who could email large groups, and IT needed self-service tooling without paying for Premium connectors.</p>
+    <p><strong>Objective:</strong> Bring licensing under control, tighten access and mail flow, and deliver useful internal tools using only the licenses already owned.</p>
+
+    <h2>The plan at a glance</h2>
+    <div class="pipeline"><div class="p-step"><div class="num">1</div><i class="fas fa-magnifying-glass-dollar"></i><h4>Audit licenses</h4><p>Purchased versus assigned, per SKU.</p></div><div class="p-step"><div class="num">2</div><i class="fas fa-inbox"></i><h4>Shared mailboxes</h4><p>50 licenses down to 25.</p></div><div class="p-step"><div class="num">3</div><i class="fas fa-id-badge"></i><h4>Identity</h4><p>Entra ID users, admin separation, SSO.</p></div><div class="p-step"><div class="num">4</div><i class="fas fa-envelope-circle-check"></i><h4>Mail flow</h4><p>Restrict who can send to groups.</p></div><div class="p-step"><div class="num">5</div><i class="fas fa-sitemap"></i><h4>SharePoint</h4><p>IT Directory site and custom web part.</p></div><div class="p-step"><div class="num">6</div><i class="fas fa-bolt"></i><h4>Power Platform</h4><p>Self-service app with audit trail.</p></div></div>
+
+    <h2 class="step-section">Step by step</h2>
+    
+    <div class="step-block">
+      <div class="step-num">1</div>
+      <h3>Audit every license against real usage</h3>
+      <p>Licensing is usually the biggest controllable cost in Microsoft 365, and nobody notices waste until someone counts.</p>
+      <ul><li>Pulled purchased versus consumed units for every subscription, including Entra ID P1, Power Automate Premium and Windows E3 VDA.</li><li>Compared assignments against what each role actually uses day to day (agents need email, a browser and a headset).</li><li>Found significant over-licensing on several SKUs and documented consolidation options with their trade-offs.</li><li>Presented the findings so leadership could decide which subscriptions to reduce at renewal.</li></ul>
+      <div class="code-block"><code># Purchased vs. assigned per SKU (Microsoft Graph PowerShell)
+Connect-MgGraph -Scopes &quot;Organization.Read.All&quot;
+Get-MgSubscribedSku | Select-Object SkuPartNumber,
+  @{n=&#x27;Purchased&#x27;;e={$_.PrepaidUnits.Enabled}},
+  @{n=&#x27;Assigned&#x27;;e={$_.ConsumedUnits}},
+  @{n=&#x27;Unused&#x27;;e={$_.PrepaidUnits.Enabled - $_.ConsumedUnits}} |
+  Sort-Object Unused -Descending</code></div><div class="bp-callout"><i class="fas fa-shield-alt"></i><div class="bp-text"><h4>Best practice: license by role, not by person</h4><p>Define a standard license bundle per job role. New hires get the bundle for their role, and audits become a simple comparison instead of an investigation.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">2</div>
+      <h3>Cut licenses from 50 to 25 with shared mailboxes</h3>
+      <p>Many licensed accounts were not really people. Teams were signing in to a shared email address, and each of those accounts was paying for a full license.</p>
+      <ul><li>Identified the accounts used as shared logins rather than by one person.</li><li>Converted them to shared mailboxes, which need no license, and gave the right users access to them.</li><li>Removed the freed licenses, bringing the count from 50 down to 25.</li><li>Users now open the shared inbox from their own account, so every action is tied to a real person instead of a shared password.</li></ul>
+      <div class="code-block"><code># Convert a shared-login account to a shared mailbox
+Set-Mailbox -Identity &quot;support@example.com&quot; -Type Shared
+
+# Give the team access from their own accounts
+Add-MailboxPermission -Identity &quot;support@example.com&quot; -User &quot;Support Team&quot; `
+  -AccessRights FullAccess -AutoMapping $true
+Add-RecipientPermission -Identity &quot;support@example.com&quot; -Trustee &quot;Support Team&quot; `
+  -AccessRights SendAs -Confirm:$false
+
+# Then remove the license from the converted account</code></div><div class="bp-callout"><i class="fas fa-shield-alt"></i><div class="bp-text"><h4>Best practice: no shared passwords</h4><p>Shared mailboxes save money and improve security at the same time: nobody shares a password, and the audit log shows who sent what.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">3</div>
+      <h3>Manage identity and access in Entra ID</h3>
+      
+      <ul><li>Handled user lifecycle in Entra ID: creation, mailbox provisioning, group membership and offboarding.</li><li>Used a separate administrator identity for the second tenant so daily accounts never carry admin rights there.</li><li>Confirmed the agents' enrollment software supports single sign-on with OAuth2 / OpenID Connect against the company identity provider, as a path to fewer passwords.</li><li>Contributed to the bring-your-own-device security program, with HIPAA and SOC 2 as the compliance drivers.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">4</div>
+      <h3>Control mail flow in Exchange Online</h3>
+      
+      <ul><li>Restricted which people can send to large distribution lists and Microsoft 365 groups, after operations asked to stop unwanted mass emails to agents.</li><li>Required senders to be authenticated so outside addresses cannot email internal groups.</li><li>Worked on SPF and DMARC records with the email security gateway as part of the domain hardening effort.</li></ul>
+      <div class="code-block"><code># Allow only approved senders to post to a distribution list
+Set-DistributionGroup -Identity &quot;All Agents&quot; `
+  -AcceptMessagesOnlyFromSendersOrMembers &quot;Ops Leads&quot; `
+  -RequireSenderAuthenticationEnabled $true
+
+# Same idea for a Microsoft 365 group
+Set-UnifiedGroup -Identity &quot;Agents&quot; `
+  -AcceptMessagesOnlySendersOrMembers &quot;Ops Leads&quot;</code></div><div class="bp-callout bp-warning"><i class="fas fa-exclamation-triangle"></i><div class="bp-text"><h4>Precaution: test with a non-approved account</h4><p>After applying a restriction, send a test from an account outside the allowed list and confirm the bounce message, so nobody is surprised.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">5</div>
+      <h3>Build an IT Directory in SharePoint with a custom SPFx web part</h3>
+      
+      <ul><li>Created a SharePoint Communication Site to host IT resources.</li><li>Developed a custom SharePoint Framework web part in React and TypeScript using PnPjs v4, with live search, a styled results table and one-click copy per row.</li><li>Solved PnPjs v4 query syntax changes, SharePoint internal column names and strict TypeScript typing issues along the way.</li></ul>
+      <div class="bp-callout"><i class="fas fa-lightbulb"></i><div class="bp-text"><h4>Lesson: always query internal column names</h4><p>SharePoint shows display names in the UI, but the API needs internal names, which can differ if a column was renamed. Check them in list settings before writing queries.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">6</div>
+      <h3>Ship a self-service troubleshooting hub on Power Platform</h3>
+      
+      <ul><li>Built a Power Apps canvas app embedded in SharePoint that walks agents through headset and call-quality checks, with a free-text path for anything else.</li><li>Stored each session in a SharePoint list and screenshots in a document library, creating an audit trail before a ticket ever reaches IT.</li><li>Automated logging and notifications with five Power Automate flows.</li><li>Used standard connectors only, so it runs on Business Standard with no Premium licensing.</li></ul>
+      
+    </div>
+    <div class="step-block">
+      <div class="step-num">7</div>
+      <h3>Apply retention to sensitive files</h3>
+      
+      <ul><li>For a workflow that handles uploaded documents, files are moved out of chat into SharePoint within minutes and automatically deleted after three days.</li><li>Kept short, defined retention windows for request data, so sensitive information does not pile up in collaboration tools.</li></ul>
+      
+    </div>
+
+    <h2>Outcome</h2>
+    <ul><li>Microsoft 365 licenses reduced from 50 to 25 by converting shared logins to shared mailboxes.</li><li>A clear, per-SKU view of remaining license waste with consolidation options for renewal.</li><li>Mass-email restrictions in place on agent distribution groups.</li><li>An IT Directory with a custom React web part that staff use instead of asking for numbers.</li><li>A no-Premium self-service app that sends IT tickets with evidence attached.</li><li>Short, automatic retention for sensitive uploaded files.</li></ul>
+
+    <h2>Technology used</h2>
+    <div class="req-grid"><div class="req-card"><i class="fas fa-id-card"></i><h4>Entra ID</h4><p>Users, groups, admin separation, SSO (OAuth2 / OIDC).</p></div><div class="req-card"><i class="fas fa-envelope"></i><h4>Exchange Online</h4><p>Distribution groups, sender restrictions, SPF and DMARC.</p></div><div class="req-card"><i class="fas fa-terminal"></i><h4>PowerShell & Graph</h4><p>License reporting and bulk administration.</p></div><div class="req-card"><i class="fas fa-share-nodes"></i><h4>SharePoint Online</h4><p>Communication sites, lists, libraries, retention.</p></div><div class="req-card"><i class="fas fa-code"></i><h4>SPFx, React, TypeScript</h4><p>Custom web part using PnPjs v4.</p></div><div class="req-card"><i class="fas fa-bolt"></i><h4>Power Apps & Power Automate</h4><p>Canvas app and five flows on standard connectors.</p></div></div>
+
+    <div class="cs-footer-cta">
+      <h3>Paying for licenses nobody uses?</h3>
+      <p>I audit Microsoft 365 tenants and build on the licenses you already own.</p>
+      <a href="index.html#contact" class="btn btn-demo"><i class="fas fa-envelope"></i> Contact me</a>
+      <a href="index.html#projects" class="btn btn-outline" style="margin-left:14px; padding:15px 34px; font-size:1.6rem; border-radius:50px;"><i class="fas fa-arrow-left"></i> More projects</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container" style="text-align:center;">
+      <p style="font-size:1.4rem; color:#888;">&copy; 2026 Andres Hernandez. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <script src="./javascript/main.js"></script>
+</body>
+</html>

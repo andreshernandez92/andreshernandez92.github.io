@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoIP Carrier Migration: iPFone to DIDWW | Andres Hernandez</title>
+  <meta name="description" content="Case study: helping move a contact center&#x27;s phone numbers from iPFone to DIDWW, supporting the number porting and building the inbound call flow so every number reached the right place on day one." />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style/styles.css" />
+  <link rel="stylesheet" href="./style/case-study.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="assets/logo.svg" alt="Andres Hernandez" /></a>
+      <ul class="nav-links cs-nav">
+        <li><a href="index.html#projects" class="nav-cta"><i class="fas fa-arrow-left"></i> Back to Portfolio</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="cs-hero">
+    <div class="container fade-in">
+      <div class="hero-badge"><i class="fas fa-phone-volume"></i> Telephony & Number Porting</div>
+      <h1>VoIP Carrier Migration: iPFone to DIDWW</h1>
+      <p class="hero-subtitle" style="margin-top:18px; font-size:1.8rem; max-width:820px; margin-left:auto; margin-right:auto;">Helping move a live contact center's phone numbers to a new carrier: supporting the number porting and building the call flow the numbers land on.</p>
+      <div class="tag-strip"><span>Number Porting</span><span>DIDWW</span><span>iPFone</span><span>Call Flow Design</span><span>IVR</span><span>Queues</span><span>Testing</span></div>
+    </div>
+  </section>
+
+  <section class="cs-content fade-in">
+    <div class="privacy-note"><i class="fas fa-user-shield"></i><span>Production work. Employer, client, colleague and customer details have been removed; only the approach and the technology are described.</span></div>
+
+    <div class="cs-meta"><div><h4>My role</h4><p>Supported the number porting and built the call flow</p></div><div><h4>Team</h4><p>Part of the team running the migration</p></div><div><h4>Environment</h4><p>Cloud contact center, inbound queues and IVR</p></div><div><h4>Risk</h4><p>Live customer lines, no room for dead numbers</p></div></div>
+    
+
+    <h2>The problem</h2>
+    <p>The contact center's phone numbers were with iPFone and were being moved to DIDWW. Each number fed a queue or an IVR, so if a number finished porting before its routing was ready, callers would hear an error instead of reaching an agent.</p>
+    <p><strong>Objective:</strong> Get the numbers ported to DIDWW and make sure each one reached the correct destination through a working call flow as soon as it went live.</p>
+
+    <h2>The plan at a glance</h2>
+    <div class="pipeline"><div class="p-step"><div class="num">1</div><i class="fas fa-list-check"></i><h4>Number list</h4><p>Which numbers move, and where each one goes.</p></div><div class="p-step"><div class="num">2</div><i class="fas fa-right-left"></i><h4>Porting</h4><p>Help prepare and follow the port requests.</p></div><div class="p-step"><div class="num">3</div><i class="fas fa-diagram-project"></i><h4>Call flow</h4><p>Build the routing the numbers land on.</p></div><div class="p-step"><div class="num">4</div><i class="fas fa-vial"></i><h4>Test & verify</h4><p>Call every number after it goes live.</p></div></div>
+
+    <h2 class="step-section">Step by step</h2>
+    
+    <div class="step-block">
+      <div class="step-num">1</div>
+      <h3>Organize the numbers to be moved</h3>
+      
+      <ul><li>Helped put together the list of numbers being ported and what each one was used for.</li><li>Matched each number to the queue, IVR or team it needed to reach once it was on DIDWW.</li></ul>
+      <div class="bp-callout"><i class="fas fa-shield-alt"></i><div class="bp-text"><h4>Best practice: one list, one source of truth</h4><p>Keep a single sheet with every number, its purpose, its destination and its porting status. Everyone on the migration works from the same list.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">2</div>
+      <h3>Support the number porting</h3>
+      
+      <ul><li>Helped gather the information the port requests needed and follow the requests through to completion.</li><li>Tracked which numbers had completed porting and which were still pending.</li></ul>
+      <div class="bp-callout"><i class="fas fa-lightbulb"></i><div class="bp-text"><h4>Lesson: details must match the old carrier exactly</h4><p>Port requests are rejected when the account details differ even slightly from what the losing carrier has on file. Check them against a recent bill before submitting.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">3</div>
+      <h3>Build the inbound call flow</h3>
+      
+      <ul><li>Created the call flow the ported numbers route into: which queue or IVR each number reaches, and what happens when nobody answers or it is after hours.</li><li>Set it up before the numbers went live, so they worked the moment porting completed.</li></ul>
+      <div class="bp-callout"><i class="fas fa-shield-alt"></i><div class="bp-text"><h4>Best practice: route before you port</h4><p>If a number activates before its routing exists, callers get an error until someone notices. Build the flow first, then let the number go live.</p></div></div>
+    </div>
+    <div class="step-block">
+      <div class="step-num">4</div>
+      <h3>Test and verify</h3>
+      
+      <ul><li>Placed test calls through the flow to confirm each path reached the right place, including menu options and after-hours handling.</li><li>Called the ported numbers after they went live to confirm they routed correctly.</li></ul>
+      
+    </div>
+
+    <h2>Outcome</h2>
+    <ul><li>Numbers moved from iPFone to DIDWW with a call flow ready for them.</li><li>Each number tested after porting to confirm it reached the right destination.</li><li>A clear number list documenting where every line goes.</li></ul>
+
+    <h2>Technology used</h2>
+    <div class="req-grid"><div class="req-card"><i class="fas fa-phone"></i><h4>DIDWW</h4><p>New carrier receiving the ported numbers.</p></div><div class="req-card"><i class="fas fa-phone-slash"></i><h4>iPFone</h4><p>Previous carrier the numbers came from.</p></div><div class="req-card"><i class="fas fa-right-left"></i><h4>Number porting</h4><p>Port requests and status tracking.</p></div><div class="req-card"><i class="fas fa-diagram-project"></i><h4>Call flow / IVR</h4><p>Routing to queues, menus and after hours.</p></div><div class="req-card"><i class="fas fa-headset"></i><h4>Contact center platform</h4><p>Queues and agent destinations.</p></div><div class="req-card"><i class="fas fa-file-lines"></i><h4>Documentation</h4><p>Number list with destination and status.</p></div></div>
+
+    <div class="cs-footer-cta">
+      <h3>Moving phone numbers without dropping calls</h3>
+      <p>I help plan the routing so numbers work the moment they go live.</p>
+      <a href="index.html#contact" class="btn btn-demo"><i class="fas fa-envelope"></i> Contact me</a>
+      <a href="index.html#projects" class="btn btn-outline" style="margin-left:14px; padding:15px 34px; font-size:1.6rem; border-radius:50px;"><i class="fas fa-arrow-left"></i> More projects</a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container" style="text-align:center;">
+      <p style="font-size:1.4rem; color:#888;">&copy; 2026 Andres Hernandez. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <script src="./javascript/main.js"></script>
+</body>
+</html>
